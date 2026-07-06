@@ -1,194 +1,158 @@
-const setupScreen = document.getElementById("setupScreen");
+// ===== Project Restart v0.3.0 =====
+
+let player = {
+    name: "",
+    job: "",
+    level: 1,
+    xp: 0,
+    xpMax: 100,
+    gold: 0,
+    restart: 0
+};
+
+const jobs = {
+    wizard: "🧙 賢者",
+    warrior: "⚔ 戦士",
+    bard: "🎵 吟遊詩人"
+};
+
+const titleScreen = document.getElementById("titleScreen");
+const jobScreen = document.getElementById("jobScreen");
 const homeScreen = document.getElementById("homeScreen");
 
-const startBtn = document.getElementById("startBtn");
-const completeBtn = document.getElementById("completeBtn");
+const beginBtn = document.getElementById("beginBtn");
+const jobStartBtn = document.getElementById("jobStartBtn");
 
-const quests = [
-  "タイトルを考える",
-  "300文字書く",
-  "見出し画像を作る",
-  "記事を公開する",
-  "AIと構成を考える",
-  "1つだけ追記する",
-  "過去記事をリライトする",
-  "コメント返信をする"
-];
+let selectedJob = "";
 
-let player = JSON.parse(localStorage.getItem("ProjectRestart"));
+beginBtn.addEventListener("click", () => {
 
-if(player){
-    showHome();
-}else{
-    showSetup();
-}
+    titleScreen.classList.add("hidden");
+    jobScreen.classList.remove("hidden");
 
-function showSetup(){
-    setupScreen.classList.remove("hidden");
-    homeScreen.classList.add("hidden");
-}
+});
 
-function showHome(){
+document.querySelectorAll(".job").forEach(card => {
 
-    setupScreen.classList.add("hidden");
-    homeScreen.classList.remove("hidden");
+    card.addEventListener("click", () => {
 
-    document.getElementById("welcome").textContent =
-        `こんにちは ${player.name} さん`;
+        document.querySelectorAll(".job").forEach(j => {
+            j.classList.remove("selected");
+        });
 
-    document.getElementById("level").textContent = player.level;
+        card.classList.add("selected");
 
-    document.getElementById("gold").textContent = player.gold;
+        selectedJob = card.dataset.job;
 
-    document.getElementById("restart").textContent = player.restart;
+    });
 
-    updateXP();
+});
 
-    createQuest();
+jobStartBtn.addEventListener("click", () => {
 
-}
-
-startBtn.addEventListener("click",()=>{
-
-    const name=document.getElementById("name").value.trim();
-
-    const note=document.getElementById("note").value.trim();
-
-    if(name===""){
-        alert("ニックネームを入力してください");
+    if(selectedJob===""){
+        alert("ジョブを選択してください");
         return;
     }
 
-    player={
-        name:name,
-        note:note,
-        level:1,
-        xp:0,
-        gold:0,
-        restart:0
-    };
+    player.job = selectedJob;
 
-    save();
+    const save = localStorage.getItem("projectRestart");
 
-    showHome();
+    if(save){
+
+        player = JSON.parse(save);
+
+        player.job = selectedJob;
+
+    }
+
+    savePlayer();
+
+    openHome();
 
 });
 
-completeBtn.addEventListener("click",()=>{
+function savePlayer(){
 
-    player.xp+=20;
+    localStorage.setItem(
+        "projectRestart",
+        JSON.stringify(player)
+    );
 
-    player.gold+=10;
+}
 
-    if(player.xp>=100){
+function loadPlayer(){
+
+    const save =
+    localStorage.getItem("projectRestart");
+
+    if(save){
+
+        player = JSON.parse(save);
+
+    }
+
+}
+
+function openHome(){
+
+    jobScreen.classList.add("hidden");
+    homeScreen.classList.remove("hidden");
+
+    document.getElementById("playerName").textContent =
+    player.name || "Player";
+
+    document.getElementById("jobName").textContent =
+    jobs[player.job];
+
+    document.getElementById("level").textContent =
+    player.level;
+
+    document.getElementById("gold").textContent =
+    player.gold;
+
+    document.getElementById("restart").textContent =
+    player.restart;
+
+    document.getElementById("xpText").textContent =
+    player.xp + " / " + player.xpMax + " XP";
+
+    document.getElementById("xpFill").style.width =
+    (player.xp/player.xpMax*100)+"%";
+
+}
+
+document.getElementById("completeBtn")
+.addEventListener("click",()=>{
+
+    player.xp += 25;
+    player.gold += 10;
+
+    if(player.xp>=player.xpMax){
+
+        player.xp-=player.xpMax;
 
         player.level++;
 
-        player.xp=0;
+        player.xpMax+=50;
 
-        alert("🎉 LEVEL UP!");
+        alert("🎉 LEVEL UP !!");
 
     }
 
-    save();
+    savePlayer();
 
-    updateXP();
-
-    document.getElementById("gold").textContent=player.gold;
-
-    document.getElementById("level").textContent=player.level;
-
-    createQuest();
+    openHome();
 
 });
 
-function updateXP(){
+loadPlayer();
 
-    document.getElementById("xpText").textContent =
-        `${player.xp} / 100 XP`;
+if(player.job){
 
-    document.getElementById("xpFill").style.width =
-        player.xp+"%";
+    titleScreen.classList.add("hidden");
 
-}
-
-function createQuest(){
-
-    const list=document.getElementById("questList");
-
-    list.innerHTML="";
-
-    let copy=[...quests];
-
-    for(let i=0;i<3;i++){
-
-        const index=Math.floor(Math.random()*copy.length);
-
-        const li=document.createElement("li");
-
-        li.textContent=copy[index];
-
-        copy.splice(index,1);
-
-        list.appendChild(li);
-
-    }
-
-}
-
-function save(){
-
-    localStorage.setItem(
-        "ProjectRestart",
-        JSON.stringify(player)
-    );
- // ===== Job System =====
-
-const jobs = [
-  {
-    id: "warrior",
-    name: "⚔ 戦士",
-    desc: "連続投稿ボーナス"
-  },
-  {
-    id: "wizard",
-    name: "🧙 賢者",
-    desc: "AI・解説記事向け"
-  },
-  {
-    id: "bard",
-    name: "🎵 吟遊詩人",
-    desc: "日記・エッセイ向け"
-  }
-];
-
-let playerJob =
-    localStorage.getItem("playerJob") || "";
-
-function selectJob(id){
-    playerJob=id;
-    localStorage.setItem("playerJob",id);
-    updateJob();
-}
-
-function updateJob(){
-
-    const jobName=document.getElementById("jobName");
-
-    if(!jobName) return;
-
-    const job=jobs.find(j=>j.id===playerJob);
-
-    if(job){
-        jobName.textContent=job.name;
-    }else{
-        jobName.textContent="未選択";
-    }
-
-}
-
-window.onload=()=>{
-    updateJob();
-}; 
+    openHome();
 
 }
