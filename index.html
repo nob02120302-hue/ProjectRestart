@@ -2,43 +2,37 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Project Restart</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div id="setupScreen" class="screen">
+<!-- タイトル画面 -->
+<div id="titleScreen" class="screen">
 
-<div class="card">
+<div class="title-card">
 
-<h1>🌱 Project Restart</h1>
+<h1 class="logo">🌱 PROJECT RESTART</h1>
 
-<p class="sub">
-noteを書くことをゲームにしよう。
+<p class="story">
+
+世界から物語が消えた。<br>
+本は閉じられ、精霊は眠り、<br>
+誰も長い文章を書かなくなった。<br><br>
+
+あなたは最後のWriter。<br>
+この世界に物語を取り戻そう。
+
 </p>
 
-<label>ニックネーム</label>
+<button id="beginBtn">
 
-<input
-id="name"
-type="text"
-placeholder="信行">
-
-<label>noteプロフィールURL</label>
-
-<input
-id="note"
-type="url"
-placeholder="https://note.com/">
-
-<button id="startBtn">
-
-START
+冒険を始める
 
 </button>
 
@@ -46,6 +40,70 @@ START
 
 </div>
 
+<!-- ジョブ選択 -->
+<div id="jobScreen" class="screen hidden">
+
+<div class="card">
+
+<h2>ジョブを選択</h2>
+
+<p>
+
+最初のジョブを選んでください。
+
+</p>
+
+<div class="job-list">
+
+<div class="job" data-job="wizard">
+
+<h3>🧙 賢者</h3>
+
+<p>
+
+AI・知識・解説記事が得意。
+
+</p>
+
+</div>
+
+<div class="job" data-job="warrior">
+
+<h3>⚔ 戦士</h3>
+
+<p>
+
+継続投稿で経験値アップ。
+
+</p>
+
+</div>
+
+<div class="job" data-job="bard">
+
+<h3>🎵 吟遊詩人</h3>
+
+<p>
+
+日記・エッセイ・物語を書くのが得意。
+
+</p>
+
+</div>
+
+</div>
+
+<button id="jobStartBtn">
+
+このジョブで始める
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ホーム画面 -->
 <div id="homeScreen" class="screen hidden">
 
 <div class="card">
@@ -58,13 +116,43 @@ START
 
 </header>
 
+<section class="playerCard">
+
+<div class="avatar">
+
+📖
+
+</div>
+
+<div>
+
+<h2 id="playerName">
+
+Player
+
+</h2>
+
+<p id="jobName">
+
+未選択
+
+</p>
+
+</div>
+
+</section>
+
 <section class="levelCard">
 
 <div class="levelTop">
 
 <span>LEVEL</span>
 
-<h2 id="level">1</h2>
+<h2 id="level">
+
+1
+
+</h2>
 
 </div>
 
@@ -74,40 +162,18 @@ START
 
 </div>
 
-<div class="xpBar">
-    <div id="xpFill"></div>
-</div>
+<p id="xpText">
 
-<p id="xpText">0 / 100 XP</p>
+0 / 100 XP
 
-<div class="job-card">
-
-    <h3>現在のジョブ</h3>
-
-    <p id="jobName">未選択</p>
-
-    <button onclick="selectJob('warrior')">
-        ⚔ 戦士
-    </button>
-
-    <button onclick="selectJob('wizard')">
-        🧙 賢者
-    </button>
-
-    <button onclick="selectJob('bard')">
-        🎵 吟遊詩人
-    </button>
-
-</div>
 </p>
 
 </section>
-
 <section class="status">
 
 <div class="box">
 
-<h3>Gold</h3>
+<h3>💰 Gold</h3>
 
 <p id="gold">
 
@@ -119,7 +185,7 @@ START
 
 <div class="box">
 
-<h3>Restart</h3>
+<h3>🔥 Restart</h3>
 
 <p id="restart">
 
@@ -135,23 +201,47 @@ START
 
 <h2>
 
-Today's note Quest
+📜 Today's Quest
 
 </h2>
 
 <ul id="questList">
 
-<li>タイトルを決める</li>
+<li>☐ タイトルを決める</li>
 
-<li>500文字書く</li>
+<li>☐ AIと構成を考える</li>
 
-<li>公開する</li>
+<li>☐ 500文字以上書く</li>
+
+<li>☐ 記事を公開する</li>
 
 </ul>
 
 <button id="completeBtn">
 
-COMPLETE
+Quest Complete
+
+</button>
+
+</section>
+
+<section class="menu">
+
+<button id="inventoryBtn">
+
+🎒 Inventory
+
+</button>
+
+<button id="gachaBtn">
+
+🧚 精霊召喚
+
+</button>
+
+<button id="storyBtn">
+
+📖 Story
 
 </button>
 
@@ -161,7 +251,7 @@ COMPLETE
 
 </div>
 
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
