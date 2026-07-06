@@ -142,5 +142,53 @@ function save(){
         "ProjectRestart",
         JSON.stringify(player)
     );
+ // ===== Job System =====
+
+const jobs = [
+  {
+    id: "warrior",
+    name: "⚔ 戦士",
+    desc: "連続投稿ボーナス"
+  },
+  {
+    id: "wizard",
+    name: "🧙 賢者",
+    desc: "AI・解説記事向け"
+  },
+  {
+    id: "bard",
+    name: "🎵 吟遊詩人",
+    desc: "日記・エッセイ向け"
+  }
+];
+
+let playerJob =
+    localStorage.getItem("playerJob") || "";
+
+function selectJob(id){
+    playerJob=id;
+    localStorage.setItem("playerJob",id);
+    updateJob();
+}
+
+function updateJob(){
+
+    const jobName=document.getElementById("jobName");
+
+    if(!jobName) return;
+
+    const job=jobs.find(j=>j.id===playerJob);
+
+    if(job){
+        jobName.textContent=job.name;
+    }else{
+        jobName.textContent="未選択";
+    }
+
+}
+
+window.onload=()=>{
+    updateJob();
+}; 
 
 }
