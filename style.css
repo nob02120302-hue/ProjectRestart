@@ -164,5 +164,44 @@ button:active{
 
 .quest ul{
   padding-left:20px;
+  .job-card{
+    margin-top:20px;
+    padding:20px;
+    border-radius:18px;
+    background:#1d2330;
+}
+
+.job-card button{
+
+display:block;
+
+width:100%;
+
+margin-top:10px;
+
+padding:12px;
+
+border:none;
+
+border-radius:12px;
+
+background:#4caf50;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.2s;
+}
+
+.job-card button:hover{
+
+transform:scale(1.03);
+
+background:#66bb6a;
+
+}
   line-height:2;
 }
