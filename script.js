@@ -120,25 +120,21 @@ function openHome(){
 }
 
 document.getElementById("completeBtn")
-.addEventListener("click",()=>{
+.addEventListener("click", () => {
 
-    player.xp += 25;
-    player.gold += 10;
+    let gainXP = 25;
+    let gainGold = 10;
 
-    if(player.xp>=player.xpMax){
+    animateXP(gainXP);
 
-        player.xp-=player.xpMax;
+    player.gold += gainGold;
 
-        player.level++;
-
-        player.xpMax+=50;
-
-        alert("🎉 LEVEL UP !!");
-
-    }
+    document.getElementById("gold").textContent =
+    player.gold;
 
     savePlayer();
 
+});
     openHome();
 
 });
@@ -150,5 +146,45 @@ if(player.job){
     titleScreen.classList.add("hidden");
 
     openHome();
+
+}
+function animateXP(amount){
+
+    let current = 0;
+
+    const timer = setInterval(()=>{
+
+        current++;
+
+        player.xp++;
+
+        if(player.xp >= player.xpMax){
+
+            player.xp = 0;
+            player.level++;
+            player.xpMax += 50;
+
+            alert("🎉 LEVEL UP!");
+
+            document.getElementById("level").textContent =
+            player.level;
+
+        }
+
+        document.getElementById("xpText").textContent =
+        player.xp + " / " + player.xpMax + " XP";
+
+        document.getElementById("xpFill").style.width =
+        (player.xp/player.xpMax*100)+"%";
+
+        if(current >= amount){
+
+            clearInterval(timer);
+
+            savePlayer();
+
+        }
+
+    },25);
 
 }
