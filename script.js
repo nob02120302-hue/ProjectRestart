@@ -1,7 +1,7 @@
-// ===== Project Restart v0.3.0 =====
+// ===== Project Restart v1.0 =====
 
 let player = {
-    name: "",
+    name: "Player",
     job: "",
     level: 1,
     xp: 0,
@@ -11,8 +11,8 @@ let player = {
 };
 
 const jobs = {
-    wizard: "🧙 賢者",
     warrior: "⚔ 戦士",
+    wizard: "🧙 賢者",
     bard: "🎵 吟遊詩人"
 };
 
@@ -22,8 +22,13 @@ const homeScreen = document.getElementById("homeScreen");
 
 const beginBtn = document.getElementById("beginBtn");
 const jobStartBtn = document.getElementById("jobStartBtn");
+const completeBtn = document.getElementById("completeBtn");
 
 let selectedJob = "";
+
+// ----------------
+// タイトル → ジョブ選択
+// ----------------
 
 beginBtn.addEventListener("click", () => {
 
@@ -31,6 +36,10 @@ beginBtn.addEventListener("click", () => {
     jobScreen.classList.remove("hidden");
 
 });
+
+// ----------------
+// ジョブ選択
+// ----------------
 
 document.querySelectorAll(".job").forEach(card => {
 
@@ -48,27 +57,30 @@ document.querySelectorAll(".job").forEach(card => {
 
 });
 
+// ----------------
+// ゲーム開始
+// ----------------
+
 jobStartBtn.addEventListener("click", () => {
 
     if(selectedJob === ""){
+
         alert("ジョブを選択してください");
+
         return;
+
     }
 
     player.job = selectedJob;
-
-    if(player.name === ""){
-        player.name = "Player";
-    }
 
     savePlayer();
 
     openHome();
 
-    document.getElementById("welcome").textContent =
-    "ようこそ、" + jobs[player.job] + "！";
-
 });
+// ----------------
+// セーブ・ロード
+// ----------------
 
 function savePlayer(){
 
@@ -81,8 +93,7 @@ function savePlayer(){
 
 function loadPlayer(){
 
-    const save =
-    localStorage.getItem("projectRestart");
+    const save = localStorage.getItem("projectRestart");
 
     if(save){
 
@@ -92,13 +103,21 @@ function loadPlayer(){
 
 }
 
+// ----------------
+// ホーム画面
+// ----------------
+
 function openHome(){
 
     jobScreen.classList.add("hidden");
+    titleScreen.classList.add("hidden");
     homeScreen.classList.remove("hidden");
 
+    document.getElementById("welcome").textContent =
+    "ようこそ、" + jobs[player.job] + "！";
+
     document.getElementById("playerName").textContent =
-    player.name || "Player";
+    player.name;
 
     document.getElementById("jobName").textContent =
     jobs[player.job];
@@ -116,145 +135,86 @@ function openHome(){
     player.xp + " / " + player.xpMax + " XP";
 
     document.getElementById("xpFill").style.width =
-    (player.xp/player.xpMax*100)+"%";
+    (player.xp / player.xpMax * 100) + "%";
+
+    generateQuest();
 
 }
 
-document.getElementById("completeBtn")
-.addEventListener("click", () => {
-
-    let gainXP = 25;
-    let gainGold = 10;
-
-    animateXP(gainXP);
-
-    player.gold += gainGold;
-
-    document.getElementById("gold").textContent =
-    player.gold;
-
-    savePlayer();
-
-
+// ----------------
+// 起動時
+// ----------------
 
 loadPlayer();
 
 if(player.job){
-
-    titleScreen.classList.add("hidden");
 
     dailyLogin();
 
     openHome();
 
 }
+// ----------------
+// クエスト達成
+// ----------------
 
-function animateXP(amount){
+completeBtn.addEventListener("click", () => {
 
-    let current = 0;
+    player.xp += 25;
+    player.gold += 10;
 
-    const timer = setInterval(() => {
+    if(player.xp >= player.xpMax){
 
-        current++;
-        player.xp++;
+        player.xp -= player.xpMax;
+        player.level++;
+        player.xpMax += 50;
 
-        if(player.xp >= player.xpMax){
+        alert("🎉 LEVEL UP!");
 
-            player.xp = 0;
-            player.level++;
-            player.xpMax += 50;
+    }
 
-            alert("🎉 LEVEL UP!");
+    savePlayer();
+    openHome();
 
-            document.getElementById("level").textContent =
-            player.level;
+});
 
-        }
+// ----------------
+// デイリーログイン
+// ----------------
 
-        document.getElementById("xpText").textContent =
-        player.xp + " / " + player.xpMax + " XP";
-
-        document.getElementById("xpFill").style.width =
-        (player.xp / player.xpMax * 100) + "%";
-
-        if(current >= amount){
-
-            clearInterval(timer);
-
-            generateQuest();
-            savePlayer();
-
-        }
-
-    }, 25);
-
-}
-
-                document.getElementById("xpText").textContent =
-        player.xp + " / " + player.xpMax + " XP";
-
-        document.getElementById("xpFill").style.width =
-        (player.xp / player.xpMax * 100) + "%";
-
-        if(current >= amount){
-
-            clearInterval(timer);
-
-            generateQuest();
-
-            savePlayer();
-
-        }
-
-    }, 25);
-
-}
 function dailyLogin(){
 
     const today = new Date().toLocaleDateString();
 
-    const lastLogin =
-    localStorage.getItem("lastLogin");
-
-    if(lastLogin !== today){
+    if(localStorage.getItem("lastLogin") !== today){
 
         player.gold += 50;
+        player.restart++;
 
-        player.restart += 1;
-
-        localStorage.setItem(
-            "lastLogin",
-            today
-        );
+        localStorage.setItem("lastLogin", today);
 
         savePlayer();
 
-        alert(
-            "🎁 ログインボーナス！\n\n" +
-            "💰 Gold +50\n" +
-            "🔥 Restart +1"
-        );
+        alert("🎁 ログインボーナス！");
 
     }
 
 }
+
+// ----------------
+// デイリークエスト
+// ----------------
+
 const dailyQuestPool = [
 
-"AIで記事構成を考える",
-
-"500文字以上書く",
-
-"画像を1枚作る",
-
-"noteを公開する",
-
-"下書きを1本作る",
-
-"タイトルを5個考える",
-
-"過去記事をリライトする",
-
-"AIにアイデアを10個出してもらう"
+    "AIで記事構成を考える",
+    "500文字以上書く",
+    "画像を1枚作る",
+    "noteを公開する",
+    "下書きを1本作る",
+    "タイトルを5個考える",
+    "過去記事をリライトする",
+    "AIにアイデアを10個出してもらう"
 
 ];
 
@@ -262,13 +222,15 @@ function generateQuest(){
 
     const today = new Date().toLocaleDateString();
 
-    const savedDate = localStorage.getItem("questDate");
-    const savedQuest = localStorage.getItem("dailyQuest");
-
-    if(savedDate === today && savedQuest){
+    if(
+        localStorage.getItem("questDate") === today &&
+        localStorage.getItem("dailyQuest")
+    ){
 
         document.getElementById("questList").innerHTML =
-        "<li>☐ " + savedQuest + "</li>";
+        "<li>☐ " +
+        localStorage.getItem("dailyQuest") +
+        "</li>";
 
         return;
 
@@ -276,13 +238,11 @@ function generateQuest(){
 
     const quest =
     dailyQuestPool[
-        Math.floor(
-            Math.random()*dailyQuestPool.length
-        )
+        Math.floor(Math.random() * dailyQuestPool.length)
     ];
 
-    localStorage.setItem("dailyQuest",quest);
-    localStorage.setItem("questDate",today);
+    localStorage.setItem("questDate", today);
+    localStorage.setItem("dailyQuest", quest);
 
     document.getElementById("questList").innerHTML =
     "<li>☐ " + quest + "</li>";
