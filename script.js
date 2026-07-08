@@ -153,10 +153,9 @@ function animateXP(amount){
 
     let current = 0;
 
-    const timer = setInterval(()=>{
+    const timer = setInterval(() => {
 
         current++;
-
         player.xp++;
 
         if(player.xp >= player.xpMax){
@@ -171,6 +170,25 @@ function animateXP(amount){
             player.level;
 
         }
+
+        document.getElementById("xpText").textContent =
+        player.xp + " / " + player.xpMax + " XP";
+
+        document.getElementById("xpFill").style.width =
+        (player.xp / player.xpMax * 100) + "%";
+
+        if(current >= amount){
+
+            clearInterval(timer);
+
+            generateQuest();
+            savePlayer();
+
+        }
+
+    }, 25);
+
+}
 
                 document.getElementById("xpText").textContent =
         player.xp + " / " + player.xpMax + " XP";
