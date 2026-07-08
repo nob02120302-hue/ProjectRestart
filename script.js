@@ -64,7 +64,8 @@ jobStartBtn.addEventListener("click", () => {
     savePlayer();
 
     openHome();
-
+document.getElementById("welcome").textContent =
+"ようこそ、" + jobs[player.job] + "！";
 });
 });
 
