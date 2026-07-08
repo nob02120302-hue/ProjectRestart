@@ -247,4 +247,4 @@ function generateQuest(){
     document.getElementById("questList").innerHTML =
     "<li>☐ " + quest + "</li>";
 
-}
+} // ここに閉じ括弧を追加しました
