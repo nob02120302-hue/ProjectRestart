@@ -172,25 +172,23 @@ function animateXP(amount){
 
         }
 
-        document.getElementById("xpText").textContent =
+                document.getElementById("xpText").textContent =
         player.xp + " / " + player.xpMax + " XP";
 
         document.getElementById("xpFill").style.width =
-        (player.xp/player.xpMax*100)+"%";
-        
-generateQuest();
+        (player.xp / player.xpMax * 100) + "%";
 
-        }
-                              
         if(current >= amount){
 
             clearInterval(timer);
+
+            generateQuest();
 
             savePlayer();
 
         }
 
-    },25);
+    }, 25);
 
 }
 function dailyLogin(){
