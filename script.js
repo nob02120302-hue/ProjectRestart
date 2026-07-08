@@ -145,8 +145,11 @@ if(player.job){
 
     titleScreen.classList.add("hidden");
 
+    dailyLogin();
+
     openHome();
 
+}
 }
 function animateXP(amount){
 
@@ -186,5 +189,34 @@ function animateXP(amount){
         }
 
     },25);
+
+}
+function dailyLogin(){
+
+    const today = new Date().toLocaleDateString();
+
+    const lastLogin =
+    localStorage.getItem("lastLogin");
+
+    if(lastLogin !== today){
+
+        player.gold += 50;
+
+        player.restart += 1;
+
+        localStorage.setItem(
+            "lastLogin",
+            today
+        );
+
+        savePlayer();
+
+        alert(
+            "🎁 ログインボーナス！\n\n" +
+            "💰 Gold +50\n" +
+            "🔥 Restart +1"
+        );
+
+    }
 
 }
