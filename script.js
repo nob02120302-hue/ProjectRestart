@@ -16,6 +16,19 @@ const jobs = {
     bard: "🎵 吟遊詩人"
 };
 
+const dailyQuestPool = [
+
+    "AIで記事構成を考える",
+    "500文字以上書く",
+    "画像を1枚作る",
+    "noteを公開する",
+    "下書きを1本作る",
+    "タイトルを5個考える",
+    "過去記事をリライトする",
+    "AIにアイデアを10個出してもらう"
+
+];
+
 const titleScreen = document.getElementById("titleScreen");
 const jobScreen = document.getElementById("jobScreen");
 const homeScreen = document.getElementById("homeScreen");
@@ -205,19 +218,6 @@ function dailyLogin(){
 // デイリークエスト
 // ----------------
 
-const dailyQuestPool = [
-
-    "AIで記事構成を考える",
-    "500文字以上書く",
-    "画像を1枚作る",
-    "noteを公開する",
-    "下書きを1本作る",
-    "タイトルを5個考える",
-    "過去記事をリライトする",
-    "AIにアイデアを10個出してもらう"
-
-];
-
 function generateQuest(){
 
     const today = new Date().toLocaleDateString();
@@ -247,4 +247,4 @@ function generateQuest(){
     document.getElementById("questList").innerHTML =
     "<li>☐ " + quest + "</li>";
 
-} // ここに閉じ括弧を追加しました
+}
