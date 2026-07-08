@@ -1,7 +1,19 @@
 // ===== Project Restart v1.0 =====
 
-// HTMLの読み込みが完全に完了してから実行する安全策
-document.addEventListener("DOMContentLoaded", () => {
+// 1. まず配列を確実に定義
+const dailyQuestPool = [
+    "AIで記事構成を考える",
+    "500文字以上書く",
+    "画像を1枚作る",
+    "noteを公開する",
+    "下書きを1本作る",
+    "タイトルを5個考える",
+    "過去記事をリライトする",
+    "AIにアイデアを10個出してもらう"
+];
+
+// 2. ページ読み込み完了後に全処理を実行する
+window.addEventListener("DOMContentLoaded", () => {
 
     let player = {
         name: "Player",
@@ -19,17 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
         bard: "🎵 吟遊詩人"
     };
 
-    const dailyQuestPool = [
-        "AIで記事構成を考える",
-        "500文字以上書く",
-        "画像を1枚作る",
-        "noteを公開する",
-        "下書きを1本作る",
-        "タイトルを5個考える",
-        "過去記事をリライトする",
-        "AIにアイデアを10個出してもらう"
-    ];
-
     const titleScreen = document.getElementById("titleScreen");
     const jobScreen = document.getElementById("jobScreen");
     const homeScreen = document.getElementById("homeScreen");
@@ -45,10 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ----------------
 
     beginBtn.addEventListener("click", () => {
-
         titleScreen.classList.add("hidden");
         jobScreen.classList.remove("hidden");
-
     });
 
     // ----------------
@@ -56,19 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // ----------------
 
     document.querySelectorAll(".job").forEach(card => {
-
         card.addEventListener("click", () => {
-
             document.querySelectorAll(".job").forEach(j => {
                 j.classList.remove("selected");
             });
-
             card.classList.add("selected");
-
             selectedJob = card.dataset.job;
-
         });
-
     });
 
     // ----------------
@@ -76,45 +69,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // ----------------
 
     jobStartBtn.addEventListener("click", () => {
-
         if(selectedJob === ""){
-
             alert("ジョブを選択してください");
-
             return;
-
         }
-
         player.job = selectedJob;
-
         savePlayer();
-
         openHome();
-
     });
+
     // ----------------
     // セーブ・ロード
     // ----------------
 
     function savePlayer(){
-
         localStorage.setItem(
             "projectRestart",
             JSON.stringify(player)
         );
-
     }
 
     function loadPlayer(){
-
         const save = localStorage.getItem("projectRestart");
-
         if(save){
-
             player = JSON.parse(save);
-
         }
-
     }
 
     // ----------------
@@ -122,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // ----------------
 
     function openHome(){
-
         jobScreen.classList.add("hidden");
         titleScreen.classList.add("hidden");
         homeScreen.classList.remove("hidden");
@@ -152,89 +130,23 @@ document.addEventListener("DOMContentLoaded", () => {
         (player.xp / player.xpMax * 100) + "%";
 
         generateQuest();
-
     }
 
     // ----------------
-    // 起動時
-    // ----------------
-
-    loadPlayer();
-
-    if(player.job){
-
-        dailyLogin();
-
-        openHome();
-
-    }
-    // ----------------
-    // クエスト達成
-    // ----------------
-
-    completeBtn.addEventListener("click", () => {
-
-        player.xp += 25;
-        player.gold += 10;
-
-        if(player.xp >= player.xpMax){
-
-            player.xp -= player.xpMax;
-            player.level++;
-            player.xpMax += 50;
-
-            alert("🎉 LEVEL UP!");
-
-        }
-
-        savePlayer();
-        openHome();
-
-    });
-
-    // ----------------
-    // デイリーログイン
-    // ----------------
-
-    function dailyLogin(){
-
-        const today = new Date().toLocaleDateString();
-
-        if(localStorage.getItem("lastLogin") !== today){
-
-            player.gold += 50;
-            player.restart++;
-
-            localStorage.setItem("lastLogin", today);
-
-            savePlayer();
-
-            alert("🎁 ログインボーナス！");
-
-        }
-
-    }
-
-    // ----------------
-    // デイリークエスト
+    // デイリークエスト（配列を確実に参照できる場所）
     // ----------------
 
     function generateQuest(){
-
         const today = new Date().toLocaleDateString();
-
         if(
             localStorage.getItem("questDate") === today &&
             localStorage.getItem("dailyQuest")
         ){
-
             document.getElementById("questList").innerHTML =
             "<li>☐ " +
             localStorage.getItem("dailyQuest") +
             "</li>";
-
             return;
-
         }
 
         const quest =
@@ -247,7 +159,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("questList").innerHTML =
         "<li>☐ " + quest + "</li>";
-
     }
-    
-}); // DOMContentLoadedの閉じ括弧
+
+    // ----------------
+    // デイリーログイン
+    // ----------------
+
+    function dailyLogin(){
+        const today = new Date().toLocaleDateString();
+        if(localStorage.getItem("lastLogin") !== today){
+            player.gold += 50;
+            player.restart++;
+            localStorage.setItem("lastLogin", today);
+            savePlayer();
+            alert("🎁 ログインボーナス！");
+        }
+    }
+
+    // ----------------
+    // クエスト達成
+    // ----------------
+
+    completeBtn.addEventListener("click", () => {
+        player.xp += 25;
+        player.gold += 10;
+        if(player.xp >= player.xpMax){
+            player.xp -= player.xpMax;
+            player.level++;
+            player.xpMax += 50;
+            alert("🎉 LEVEL UP!");
+        }
+        savePlayer();
+        openHome();
+    });
+
+    // ----------------
+    // 起動時
+    // ----------------
+
+    loadPlayer();
+    if(player.job){
+        dailyLogin();
+        openHome();
+    }
+});
