@@ -179,7 +179,11 @@ function animateXP(amount){
 
         document.getElementById("xpFill").style.width =
         (player.xp/player.xpMax*100)+"%";
+        
+generateQuest();
 
+        }
+                              
         if(current >= amount){
 
             clearInterval(timer);
@@ -218,5 +222,55 @@ function dailyLogin(){
         );
 
     }
+
+}
+const dailyQuestPool = [
+
+"AIで記事構成を考える",
+
+"500文字以上書く",
+
+"画像を1枚作る",
+
+"noteを公開する",
+
+"下書きを1本作る",
+
+"タイトルを5個考える",
+
+"過去記事をリライトする",
+
+"AIにアイデアを10個出してもらう"
+
+];
+
+function generateQuest(){
+
+    const today = new Date().toLocaleDateString();
+
+    const savedDate = localStorage.getItem("questDate");
+    const savedQuest = localStorage.getItem("dailyQuest");
+
+    if(savedDate === today && savedQuest){
+
+        document.getElementById("questList").innerHTML =
+        "<li>☐ " + savedQuest + "</li>";
+
+        return;
+
+    }
+
+    const quest =
+    dailyQuestPool[
+        Math.floor(
+            Math.random()*dailyQuestPool.length
+        )
+    ];
+
+    localStorage.setItem("dailyQuest",quest);
+    localStorage.setItem("questDate",today);
+
+    document.getElementById("questList").innerHTML =
+    "<li>☐ " + quest + "</li>";
 
 }
