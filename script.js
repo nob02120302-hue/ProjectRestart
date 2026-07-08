@@ -50,27 +50,22 @@ document.querySelectorAll(".job").forEach(card => {
 
 jobStartBtn.addEventListener("click", () => {
 
-    if(selectedJob===""){
+    if(selectedJob === ""){
         alert("ジョブを選択してください");
         return;
     }
 
     player.job = selectedJob;
 
-    const save = localStorage.getItem("projectRestart");
-
-    if(save){
-
-        player = JSON.parse(save);
-
-        player.job = selectedJob;
-
+    if(player.name === ""){
+        player.name = "Player";
     }
 
     savePlayer();
 
     openHome();
 
+});
 });
 
 function savePlayer(){
