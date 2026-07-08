@@ -64,9 +64,10 @@ jobStartBtn.addEventListener("click", () => {
     savePlayer();
 
     openHome();
-document.getElementById("welcome").textContent =
-"ようこそ、" + jobs[player.job] + "！";
-});
+
+    document.getElementById("welcome").textContent =
+    "ようこそ、" + jobs[player.job] + "！";
+
 });
 
 function savePlayer(){
@@ -134,10 +135,7 @@ document.getElementById("completeBtn")
 
     savePlayer();
 
-});
-    openHome();
 
-});
 
 loadPlayer();
 
@@ -150,7 +148,7 @@ if(player.job){
     openHome();
 
 }
-}
+
 function animateXP(amount){
 
     let current = 0;
