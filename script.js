@@ -1,3 +1,5 @@
+console.log("script.js 読み込み成功");
+
 // ===== Project Restart v1.0 =====
 
 // 1. まず配列を確実に定義
