@@ -1,4 +1,4 @@
-/* style.css を全消ししてこれに置き換え */
+/* style.css */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body { 
@@ -9,7 +9,7 @@ body {
     font-family: sans-serif; 
     display: flex; 
     justify-content: center; 
-    align-items: center; /* 画面中央に配置 */
+    align-items: center;
 }
 
 #game-container { 
@@ -19,7 +19,6 @@ body {
 .scene { display: none; }
 .scene.active { display: block; }
 
-/* ボタンを大きくしてRPGっぽく */
 button {
     padding: 15px 30px;
     font-size: 20px;
@@ -32,7 +31,8 @@ button {
 }
 
 button:hover { background-color: #555; }
-/* --- ダッシュボード用レイアウトを追加 --- */
+
+/* --- ダッシュボード用レイアウト --- */
 .dashboard-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -40,7 +40,7 @@ button:hover { background-color: #555; }
     padding: 15px;
     background-color: #1a1a1a;
     color: white;
-    text-align: left; /* 文字を左寄せにする */
+    text-align: left;
 }
 
 .area-header, .area-tasks, .area-stats, .area-shop {
