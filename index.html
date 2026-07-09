@@ -3,46 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventure Game</title>
+    <title>Life Quest RPG</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="game-container">
-
-        <!-- オープニングシーン -->
-        <section id="opening-scene" class="scene active">
-            <div class="content">
-                <h1>冒険の始まり</h1>
-                <button onclick="showScene('job-scene')">冒険を始める</button>
-            </div>
+        <!-- 職業選択 -->
+        <section id="job-scene" class="scene active">
+            <h1>職業を選択</h1>
+            <button onclick="selectJob('勇者')">勇者</button>
         </section>
 
-        <!-- 職業選択シーン -->
-        <section id="job-scene" class="scene">
-            <div class="content">
-                <h1>職業を選択してください</h1>
-                <button onclick="selectJob('勇者')">勇者</button>
-                <button onclick="selectJob('魔法使い')">魔法使い</button>
-            </div>
-        </section>
-
-        <!-- 精霊選択シーン（これが必要です！） -->
+        <!-- 精霊選択 -->
         <section id="spirit-scene" class="scene">
-            <div class="content">
-                <h1>精霊を選んでください</h1>
-                <button onclick="selectSpirit('火の精霊')">火の精霊</button>
-                <button onclick="selectSpirit('水の精霊')">水の精霊</button>
-            </div>
+            <h1>精霊を選んでください</h1>
+            <button onclick="selectSpirit('火の精霊')">火の精霊</button>
         </section>
 
-        <!-- 冒険開始シーン -->
+        <!-- 冒険開始 -->
         <section id="adventure-scene" class="scene">
-            <div class="content">
-                <h1>冒険へ出発！</h1>
-            </div>
+            <h1>冒険へ出発！</h1>
+            <!-- ここでダッシュボードへ遷移 -->
+            <button onclick="showScene('dashboard-scene')">ダッシュボードへ</button>
         </section>
 
+        <!-- ★追加：ダッシュボード画面の土台 -->
+        <section id="dashboard-scene" class="scene">
+            <div id="dashboard-container">
+                <header><h1>Life Quest RPG</h1></header>
+                <div class="main-layout">
+                    <p>ここにステータスやクエストを表示していきます。</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
