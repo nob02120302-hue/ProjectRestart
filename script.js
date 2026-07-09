@@ -7,6 +7,12 @@ function showScene(sceneId) {
     const target = document.getElementById(sceneId);
     if (target) {
         target.classList.add('active');
+        
+        // ダッシュボード画面が表示された時だけ、選んだ情報を表示する
+        if (sceneId === 'dashboard-scene') {
+            document.getElementById('display-job').textContent = playerJob;
+            document.getElementById('display-spirit').textContent = playerSpirit;
+        }
     }
 }
 
