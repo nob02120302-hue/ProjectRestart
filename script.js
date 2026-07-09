@@ -8,14 +8,14 @@ function showScene(sceneId) {
     if (target) {
         target.classList.add('active');
         
-        // ダッシュボードを表示するタイミングで、選んだ情報をHTMLに流し込む
+        // --- ここを修正 ---
         if (sceneId === 'dashboard-scene') {
+            // HTMLの新しい箱に合わせて、情報を表示する
             document.getElementById('display-job').textContent = playerJob;
             document.getElementById('display-spirit').textContent = playerSpirit;
         }
     }
 }
-
 function selectJob(jobName) {
     playerJob = jobName;
     console.log("Job selected: " + playerJob);
