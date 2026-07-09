@@ -49,6 +49,9 @@ window.addEventListener("DOMContentLoaded", () => {
     // ----------------
 
     beginBtn.addEventListener("click", () => {
+        
+        console.log("beginBtnが押された");
+        
         titleScreen.classList.add("hidden");
         jobScreen.classList.remove("hidden");
     });
