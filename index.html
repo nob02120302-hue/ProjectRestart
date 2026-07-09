@@ -28,15 +28,35 @@
             <h1>ダッシュボード</h1>
             
             <!-- ここから下の「dashboard-layout」という箱の中にすべてを詰め込みます -->
-            <div class="dashboard-layout">
-                <div class="area-header">
-                    <p>職業: <span id="display-job"></span></p>
-                    <p>相棒: <span id="display-spirit"></span></p>
-                </div>
-                <div class="area-tasks">ここにタスク一覧を表示</div>
-                <div class="area-stats">ここに統計を表示</div>
-                <div class="area-shop">ここにショップを表示</div>
-            </div>
+           <div class="dashboard-layout">
+    <!-- ヘッダー：ステータス -->
+    <div class="area-header">
+        <p>職業: <span id="display-job"></span></p>
+        <p>相棒: <span id="display-spirit"></span></p>
+    </div>
+
+    <!-- 左：タスク一覧 -->
+    <div class="area-tasks">
+        <h3>クエスト一覧</h3>
+        <ul class="task-list">
+            <li><input type="checkbox"> 日報を1件作成</li>
+            <li><input type="checkbox"> スキル習得</li>
+            <li><input type="checkbox"> 記事を1本執筆</li>
+        </ul>
+    </div>
+
+    <!-- 右：統計・グラフ -->
+    <div class="area-stats">
+        <h3>統計グラフ</h3>
+        <p>Lv.1 冒険者</p>
+    </div>
+
+    <!-- 下：ショップ -->
+    <div class="area-shop">
+        <h3>冒険者ショップ</h3>
+        <button class="shop-btn">ポーション購入</button>
+    </div>
+</div>
             <!-- ここまで -->
         </section>
     <script src="script.js"></script>
