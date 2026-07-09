@@ -8,23 +8,26 @@
 </head>
 <body>
     <div id="game-container">
-        <section id="job-scene" class="scene active">
-            <h1>Select Job</h1>
-            <button onclick="selectJob('Hero')">Hero</button>
+       <section id="job-scene" class="scene active">
+            <h1>職業を選択</h1>
+            <button onclick="selectJob('タスクバトラー')">タスクバトラー</button>
+            <button onclick="selectJob('ライフクリエイター')">ライフクリエイター</button>
+            <button onclick="selectJob('スピードランナー')">スピードランナー</button>
         </section>
         <section id="spirit-scene" class="scene">
-            <h1>Select Spirit</h1>
-            <button onclick="selectSpirit('Fire Spirit')">Fire Spirit</button>
+            <h1>相棒の精霊を選択</h1>
+            <button onclick="selectSpirit('情熱の精霊')">情熱の精霊</button>
+            <button onclick="selectSpirit('冷静の精霊')">冷静の精霊</button>
+            <button onclick="selectSpirit('軽快の精霊')">軽快の精霊</button>
         </section>
         <section id="adventure-scene" class="scene">
-            <h1>Start Adventure</h1>
-            <button onclick="showScene('dashboard-scene')">Go to Dashboard</button>
+            <h1>冒険を開始</h1>
+            <button onclick="showScene('dashboard-scene')">ダッシュボードへ</button>
         </section>
         <section id="dashboard-scene" class="scene">
-            <h1>Dashboard</h1>
+            <h1>ダッシュボード</h1>
         </section>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
