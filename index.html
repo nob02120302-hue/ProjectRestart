@@ -12,147 +12,44 @@
 
 <body>
 
-<!-- タイトル画面 -->
-<div id="titleScreen" class="screen">
+<div class="app">
 
-<div class="title-card">
+<header class="top-card">
 
-<h1 class="logo">🌱 PROJECT RESTART</h1>
-
-<p class="story">
-
-世界から物語が消えた。<br>
-本は閉じられ、精霊は眠り、<br>
-誰も長い文章を書かなくなった。<br><br>
-
-あなたは最後のWriter。<br>
-この世界に物語を取り戻そう。
-
-</p>
-
-<button id="beginBtn">
-
-冒険を始める
-
-</button>
-
-</div>
-
-</div>
-
-<!-- ジョブ選択 -->
-<div id="jobScreen" class="screen hidden">
-
-<div class="card">
-
-<h2>ジョブを選択</h2>
-
-<p>
-
-最初のジョブを選んでください。
-
-</p>
-
-<div class="job-list">
-
-<div class="job" data-job="wizard">
-
-<h3>🧙 賢者</h3>
-
-<p>
-
-AI・知識・解説記事が得意。
-
-</p>
-
-</div>
-
-<div class="job" data-job="warrior">
-
-<h3>⚔ 戦士</h3>
-
-<p>
-
-継続投稿で経験値アップ。
-
-</p>
-
-</div>
-
-<div class="job" data-job="bard">
-
-<h3>🎵 吟遊詩人</h3>
-
-<p>
-
-日記・エッセイ・物語を書くのが得意。
-
-</p>
-
-</div>
-
-</div>
-
-<button id="jobStartBtn">
-
-このジョブで始める
-
-</button>
-
-</div>
-
-</div>
-
-<!-- ホーム画面 -->
-<div id="homeScreen" class="screen hidden">
-
-<div class="card">
-
-<header>
-
-<h1>🌱 Project Restart</h1>
-
-<p id="welcome"></p>
-
-</header>
-
-<section class="playerCard">
+<div class="player">
 
 <div class="avatar">
-
-📖
-
+🧙
 </div>
 
 <div>
 
-<h2 id="playerName">
+<h2 id="playerName">Player</h2>
 
-Player
-
-</h2>
-
-<p id="jobName">
-
-未選択
-
-</p>
+<p id="jobName">未選択</p>
 
 </div>
 
-</section>
+</div>
 
-<section class="levelCard">
+<div class="level-box">
 
-<div class="levelTop">
+<p>LEVEL</p>
 
-<span>LEVEL</span>
+<h1 id="level">1</h1>
 
-<h2 id="level">
+</div>
 
-1
+</header>
 
-</h2>
+
+<section class="status-card">
+
+<div class="xp-title">
+
+<span>XP</span>
+
+<span id="xpText">0 / 100</span>
 
 </div>
 
@@ -162,42 +59,30 @@ Player
 
 </div>
 
-<p id="xpText">
+<div class="status-grid">
 
-0 / 100 XP
-
-</p>
-
-</section>
-<section class="status">
-
-<div class="box">
+<div class="status-item">
 
 <h3>💰 Gold</h3>
 
-<p id="gold">
-
-0
-
-</p>
+<p id="gold">0</p>
 
 </div>
 
-<div class="box">
+<div class="status-item">
 
 <h3>🔥 Restart</h3>
 
-<p id="restart">
+<p id="restart">0</p>
 
-0
-
-</p>
+</div>
 
 </div>
 
 </section>
 
-<section class="quest">
+
+<section class="quest-card">
 
 <h2>
 
@@ -207,47 +92,34 @@ Player
 
 <ul id="questList">
 
-<li>☐ タイトルを決める</li>
-
-<li>☐ AIと構成を考える</li>
-
-<li>☐ 500文字以上書く</li>
-
-<li>☐ 記事を公開する</li>
+<li>クエスト生成中...</li>
 
 </ul>
 
 <button id="completeBtn">
 
-Quest Complete
+COMPLETE
 
 </button>
 
 </section>
 
-<section class="menu">
 
-<button id="inventoryBtn">
+<nav class="bottom-menu">
 
-🎒 Inventory
+<button>🏠</button>
 
-</button>
+<button>📜</button>
 
-<button id="gachaBtn">
+<button>⚔</button>
 
-🧚 精霊召喚
+<button>🎒</button>
 
-</button>
+<button>🏆</button>
 
-<button id="storyBtn">
+<button>⚙</button>
 
-📖 Story
-
-</button>
-
-</section>
-
-</div>
+</nav>
 
 </div>
 
