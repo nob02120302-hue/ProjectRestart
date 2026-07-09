@@ -26,17 +26,16 @@
         </section>
     <section id="dashboard-scene" class="scene">
             <!-- 新設：画像上部のヘッダーエリア -->
-            <div class="header-status">
-                <div class="header-left">
-                    <h1>Life Quest RPG</h1>
-                    <p>LEVEL 12 / 経験値: 1,180 / 1,200</p>
-                    <div class="progress-container"><div class="progress-fill" style="width: 80%;"></div></div>
-                </div>
-                <div class="header-right">
-                    <p>HP: 80/100 <span class="bar hp" style="width: 80%;"></span></p>
-                    <p>MP: 50/100 <span class="bar mp" style="width: 50%;"></span></p>
-                </div>
-            </div>
+           <div class="header-status" style="display: flex; justify-content: space-between; padding: 20px; color: white;">
+        <div class="header-left">
+            <h1 style="margin: 0;">Life Quest RPG</h1>
+            <p style="margin: 5px 0;">LEVEL 12 / 経験値: 1,180 / 1,200 <span class="progress-container"><span class="progress-fill" style="width: 80%; display:block;"></span></span></p>
+        </div>
+        <div class="header-right" style="text-align: right;">
+            <p style="margin: 5px 0;">HP: 80/100 <span class="bar hp" style="width: 80%; display:inline-block;"></span></p>
+            <p style="margin: 5px 0;">MP: 50/100 <span class="bar mp" style="width: 50%; display:inline-block;"></span></p>
+        </div>
+    </div>
 
             <!-- 以下、既存のレイアウト -->
             <div class="dashboard-layout">
