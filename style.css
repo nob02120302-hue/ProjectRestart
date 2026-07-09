@@ -1,21 +1,44 @@
 /* style.css */
-/* ...既存の設定はそのままでOKです...*/
 
-/* 追加・修正：シーンが縦に並ばないようにするための設定 */
+/* 基本設定：余白をゼロにして、背景を黒にする */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+/* ゲーム全体を覆う箱：画面いっぱいに広げる */
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 各シーンの設定：全画面に重ねる */
 .scene {
-    position: absolute; /* これが重要です！絶対配置で重ねる */
+    position: absolute; /* これが重要：重ねるための設定 */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: none;      /* 非表示 */
+    
+    display: none;      /* 初期状態は非表示 */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* 背景を黒くする */
-    color: #fff;
+    text-align: center;
 }
 
+/* activeクラスがついているシーンだけを表示する */
 .scene.active {
-    display: flex;      /* activeがついた時だけ表示 */
+    display: flex;      /* flexで表示する */
 }
