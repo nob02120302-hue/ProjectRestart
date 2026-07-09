@@ -26,3 +26,17 @@ function selectSpirit(spiritName) {
     console.log("Spirit selected: " + playerSpirit);
     showScene('adventure-scene');
 }
+function checkTask() {
+    const urlInput = document.getElementById('task-url').value;
+    
+    // 例：URLに "note" という文字が含まれていたら達成とみなす
+    if (urlInput.includes("note")) {
+        alert("クエスト達成！");
+        // チェックボックスにチェックを入れる
+        document.querySelector('#task-1 input').checked = true;
+        // 入力欄をクリア
+        document.getElementById('task-url').value = "";
+    } else {
+        alert("URLが正しくありません");
+    }
+}
