@@ -26,3 +26,15 @@ setInterval(() => {
     currentIndex = (currentIndex + 1) % scenes.length;
     showScene(scenes[currentIndex]);
 }, 3000);
+// 選択したデータを保持する変数
+let gameState = {
+    job: '',
+    spirit: ''
+};
+
+// 職業を選択して次のシーンへ
+function selectJob(jobName) {
+    gameState.job = jobName;
+    console.log("選択した職業: " + gameState.job);
+    showScene('spirit-scene'); // 次のシーンへ
+}
