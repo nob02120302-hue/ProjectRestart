@@ -24,12 +24,20 @@
             <h1>冒険を開始</h1>
             <button onclick="showScene('dashboard-scene')">ダッシュボードへ</button>
         </section>
-       <section id="dashboard-scene" class="scene">
+     <section id="dashboard-scene" class="scene">
             <h1>ダッシュボード</h1>
-            <div id="status-display">
-                <p>職業: <span id="display-job"></span></p>
-                <p>相棒: <span id="display-spirit"></span></p>
+            
+            <!-- ここから下の「dashboard-layout」という箱の中にすべてを詰め込みます -->
+            <div class="dashboard-layout">
+                <div class="area-header">
+                    <p>職業: <span id="display-job"></span></p>
+                    <p>相棒: <span id="display-spirit"></span></p>
+                </div>
+                <div class="area-tasks">ここにタスク一覧を表示</div>
+                <div class="area-stats">ここに統計を表示</div>
+                <div class="area-shop">ここにショップを表示</div>
             </div>
+            <!-- ここまで -->
         </section>
     <script src="script.js"></script>
 </body>
