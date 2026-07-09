@@ -49,3 +49,27 @@ button {
     margin: 10px;
     cursor: pointer;
 }
+/* 既存のCSSの下に追加してください */
+
+#dashboard-scene {
+    background-color: #1a1a2e; /* RPG風の暗い背景 */
+    color: white;
+    padding: 20px;
+}
+
+#dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* クエスト表とグラフの枠組み */
+    gap: 20px;
+}
