@@ -103,50 +103,72 @@ Player
 
 </header>
 
+<div class="dashboard">
+
+<div class="left-panel">
+
 <section class="status-card">
 
 <div class="xp-title">
-
 <span>XP</span>
-
-<span id="xpText">
-0 / 100
-</span>
-
+<span id="xpText">0 / 100</span>
 </div>
 
 <div class="xpBar">
-
 <div id="xpFill"></div>
-
 </div>
 
 <div class="status-grid">
 
 <div class="status-item">
-
 <h3>💰 Gold</h3>
-
-<p id="gold">
-0
-</p>
-
+<p id="gold">0</p>
 </div>
 
 <div class="status-item">
-
 <h3>🔥 Restart</h3>
-
-<p id="restart">
-0
-</p>
-
+<p id="restart">0</p>
 </div>
 
 </div>
 
 </section>
 
+</div>
+
+<div class="center-panel">
+
+<section class="quest-card">
+
+<h2>📜 Today's Quest</h2>
+
+<ul id="questList">
+<li>クエスト生成中...</li>
+</ul>
+
+<button id="completeBtn">
+COMPLETE
+</button>
+
+</section>
+
+</div>
+
+<div class="right-panel">
+
+<section class="quest-card">
+
+<h2>📊 統計</h2>
+
+<p>総レベル：<span id="level">1</span></p>
+<p>総Gold：<span id="goldStat">0</span></p>
+<p>総Restart：<span id="restartStat">0</span></p>
+
+</section>
+
+</div>
+
+</div>
 <section class="quest-card">
 
 <h2>
