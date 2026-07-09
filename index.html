@@ -1,222 +1,57 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Project Restart</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div id="titleScreen" class="screen">
+    <!-- ゲーム全体を覆うコンテナ -->
+    <div id="game-container">
 
-    <div class="hero-card">
+        <!-- オープニングシーン -->
+        <section id="opening-scene" class="scene active">
+            <div class="content">
+                <h1>冒険の始まり</h1>
+                <p>物語がここから動き出す...</p>
+            </div>
+        </section>
 
-        <h1>🌱 Project Restart</h1>
+        <!-- 職業選択シーン -->
+        <section id="job-scene" class="scene">
+            <div class="content">
+                <h1>職業を選択してください</h1>
+                <!-- ここに職業ボタンを配置 -->
+            </div>
+        </section>
 
-        <p>noteを書くことをゲームにしよう。</p>
+        <!-- 精霊選択シーン -->
+        <section id="spirit-scene" class="scene">
+            <div class="content">
+                <h1>精霊を選んでください</h1>
+                <!-- ここに精霊選択ボタンを配置 -->
+            </div>
+        </section>
 
-        <button id="beginBtn">
-            冒険を始める
-        </button>
+        <!-- 冒険開始シーン -->
+        <section id="adventure-scene" class="scene">
+            <div class="content">
+                <h1>冒険へ出発！</h1>
+            </div>
+        </section>
+
+        <!-- 最終画面（目標画像の状態） -->
+        <section id="final-scene" class="scene">
+            <div class="content">
+                <h1>最終目標画面</h1>
+                <!-- ここにあの画像のようなレイアウトを構築 -->
+            </div>
+        </section>
 
     </div>
 
-</div>
-
-<div id="jobScreen" class="screen hidden">
-
-    <div class="hero-card">
-
-        <h2>ジョブを選択</h2>
-
-        <div class="job-list">
-
-            <div class="job" data-job="warrior">
-                <h3>⚔ 戦士</h3>
-                <p>投稿速度UP</p>
-            </div>
-
-            <div class="job" data-job="wizard">
-                <h3>🧙 賢者</h3>
-                <p>XP獲得UP</p>
-            </div>
-
-            <div class="job" data-job="bard">
-                <h3>🎵 吟遊詩人</h3>
-                <p>スキ獲得UP</p>
-            </div>
-
-        </div>
-
-        <button id="jobStartBtn">
-
-            このジョブで始める
-
-        </button>
-
-    </div>
-
-</div>
-
-<div id="homeScreen" class="screen hidden">
-
-<div class="app">
-
-<header class="top-card">
-
-<div class="player">
-
-<div class="avatar">
-🧙
-</div>
-
-<div>
-
-<h2 id="playerName">
-Player
-</h2>
-    
-<p id="welcome"></p>
-    
-<p id="jobName">
-未選択
-</p>
-
-</div>
-
-</div>
-
-<div class="level-box">
-
-<p>LEVEL</p>
-
-<h1 id="level">
-1
-</h1>
-
-</div>
-
-</header>
-
-<div class="dashboard">
-
-<div class="left-panel">
-
-<section class="status-card">
-
-<div class="xp-title">
-<span>XP</span>
-<span id="xpText">0 / 100</span>
-</div>
-
-<div class="xpBar">
-<div id="xpFill"></div>
-</div>
-
-<div class="status-grid">
-
-<div class="status-item">
-<h3>💰 Gold</h3>
-<p id="gold">0</p>
-</div>
-
-<div class="status-item">
-<h3>🔥 Restart</h3>
-<p id="restart">0</p>
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-<div class="center-panel">
-
-<section class="quest-card">
-
-<h2>📜 Today's Quest</h2>
-
-<ul id="questList">
-<li>クエスト生成中...</li>
-</ul>
-
-<button id="completeBtn">
-COMPLETE
-</button>
-
-</section>
-
-</div>
-
-<div class="right-panel">
-
-<section class="quest-card">
-
-<h2>📊 統計</h2>
-
-<p>総レベル：<span id="level">1</span></p>
-<p>総Gold：<span id="goldStat">0</span></p>
-<p>総Restart：<span id="restartStat">0</span></p>
-
-</section>
-
-</div>
-
-</div>
-<section class="quest-card">
-
-<h2>
-
-📜 Today's Quest
-
-</h2>
-
-<ul id="questList">
-
-<li>
-クエスト生成中...
-</li>
-
-</ul>
-
-<button id="completeBtn">
-
-COMPLETE
-
-</button>
-
-</section>
-
-<nav class="bottom-menu">
-
-<button>🏠</button>
-
-<button>📜</button>
-
-<button>⚔️</button>
-
-<button>🎒</button>
-
-<button>🏆</button>
-
-<button>⚙️</button>
-
-</nav>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
