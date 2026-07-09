@@ -26,17 +26,21 @@
         </section>
     <section id="dashboard-scene" class="scene">
             <!-- 新設：画像上部のヘッダーエリア -->
-           <div class="header-status" style="display: flex; justify-content: space-between; padding: 20px; color: white;">
+         <div class="header-status" style="display: flex; justify-content: space-between; padding: 20px; color: white; background: #1a1a1a;">
         <div class="header-left">
             <h1 style="margin: 0;">Life Quest RPG</h1>
-            <p style="margin: 5px 0;">LEVEL 12 / 経験値: 1,180 / 1,200 <span class="progress-container"><span class="progress-fill" style="width: 80%; display:block;"></span></span></p>
+            <p style="margin: 5px 0;">LEVEL 12 / 経験値: 1,180 / 1,200</p>
+            <!-- 背景を#555にし、白い枠線(border)を追加 -->
+            <div style="width: 200px; height: 12px; background: #555; border: 1px solid white; border-radius: 6px; display: inline-block;">
+                <div style="width: 80%; height: 100%; background: #4caf50; border-radius: 6px;"></div>
+            </div>
         </div>
         <div class="header-right" style="text-align: right;">
-            <p style="margin: 5px 0;">HP: 80/100 <span class="bar hp" style="width: 80%; display:inline-block;"></span></p>
-            <p style="margin: 5px 0;">MP: 50/100 <span class="bar mp" style="width: 50%; display:inline-block;"></span></p>
+            <!-- HP/MPも同様に枠線と背景を調整 -->
+            <p style="margin: 5px 0;">HP: 80/100 <div style="width: 80px; height: 12px; background: #555; border: 1px solid white; border-radius: 6px; display: inline-block;"><div style="width: 80%; height: 100%; background: #ff4444;"></div></div></p>
+            <p style="margin: 5px 0;">MP: 50/100 <div style="width: 80px; height: 12px; background: #555; border: 1px solid white; border-radius: 6px; display: inline-block;"><div style="width: 50%; height: 100%; background: #4444ff;"></div></div></p>
         </div>
     </div>
-
             <!-- 以下、既存のレイアウト -->
             <div class="dashboard-layout">
            <div class="dashboard-layout">
