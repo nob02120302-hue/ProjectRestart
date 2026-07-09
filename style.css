@@ -32,3 +32,23 @@ button {
 }
 
 button:hover { background-color: #555; }
+/* --- ダッシュボード用レイアウトを追加 --- */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    padding: 15px;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: left; /* 文字を左寄せにする */
+}
+
+.area-header, .area-tasks, .area-stats, .area-shop {
+    background-color: #2d2d2d;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.area-header { grid-column: 1 / 3; }
+.area-shop { grid-column: 1 / 3; }
