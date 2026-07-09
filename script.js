@@ -44,18 +44,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let selectedJob = "";
 
-    // ----------------
+  // ----------------
     // タイトル → ジョブ選択
     // ----------------
-
     beginBtn.addEventListener("click", () => {
-        
         console.log("beginBtnが押された");
         
+        // クラスの付け替えだけでなく、style属性で強制的に隠す
+        titleScreen.style.display = "none";
+        jobScreen.style.display = "block"; // または "flex" など、その画面の元の設定に合わせてください
+        
+        // クラスでも管理したい場合はそのまま残す
         titleScreen.classList.add("hidden");
         jobScreen.classList.remove("hidden");
     });
-
     // ----------------
     // ジョブ選択
     // ----------------
