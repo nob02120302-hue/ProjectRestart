@@ -1,4 +1,4 @@
-// 選択した内容を記録する変数
+// script.js
 let playerJob = "";
 let playerSpirit = "";
 
@@ -11,18 +11,13 @@ function showScene(sceneId) {
 }
 
 function selectJob(jobName) {
-    playerJob = jobName; // 職業を記録
-    console.log("職業は " + playerJob + " です");
+    playerJob = jobName;
+    console.log("Job selected: " + playerJob);
     showScene('spirit-scene');
 }
 
 function selectSpirit(spiritName) {
-    playerSpirit = spiritName; // 精霊を記録
-    console.log("精霊は " + playerSpirit + " です");
-    
-    // 冒険開始画面の表示を更新
-    document.getElementById('adventure-scene').querySelector('h1').innerText = 
-        playerJob + "と" + playerSpirit + "の冒険が始まる！";
-    
+    playerSpirit = spiritName;
+    console.log("Spirit selected: " + playerSpirit);
     showScene('adventure-scene');
 }
