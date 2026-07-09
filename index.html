@@ -37,13 +37,14 @@
 
     <!-- 左：タスク一覧 -->
     <div class="area-tasks">
-        <h3>クエスト一覧</h3>
-        <ul class="task-list">
-            <li><input type="checkbox"> 日報を1件作成</li>
-            <li><input type="checkbox"> スキル習得</li>
-            <li><input type="checkbox"> 記事を1本執筆</li>
-        </ul>
-    </div>
+    <h3>クエスト報告所</h3>
+    <input type="text" id="task-url" placeholder="達成したURLを入力...">
+    <button onclick="checkTask()">報告する</button>
+    
+    <ul class="task-list">
+        <li id="task-1"><input type="checkbox" disabled> 記事を1本執筆</li>
+    </ul>
+</div>
 
     <!-- 右：統計・グラフ -->
     <div class="area-stats">
