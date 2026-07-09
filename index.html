@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,6 +13,59 @@
 </head>
 
 <body>
+
+<div id="titleScreen" class="screen">
+
+    <div class="hero-card">
+
+        <h1>🌱 Project Restart</h1>
+
+        <p>noteを書くことをゲームにしよう。</p>
+
+        <button id="beginBtn">
+            冒険を始める
+        </button>
+
+    </div>
+
+</div>
+
+<div id="jobScreen" class="screen hidden">
+
+    <div class="hero-card">
+
+        <h2>ジョブを選択</h2>
+
+        <div class="job-list">
+
+            <div class="job" data-job="warrior">
+                <h3>⚔ 戦士</h3>
+                <p>投稿速度UP</p>
+            </div>
+
+            <div class="job" data-job="wizard">
+                <h3>🧙 賢者</h3>
+                <p>XP獲得UP</p>
+            </div>
+
+            <div class="job" data-job="bard">
+                <h3>🎵 吟遊詩人</h3>
+                <p>スキ獲得UP</p>
+            </div>
+
+        </div>
+
+        <button id="jobStartBtn">
+
+            このジョブで始める
+
+        </button>
+
+    </div>
+
+</div>
+
+<div id="homeScreen" class="screen hidden">
 
 <div class="app">
 
@@ -24,9 +79,13 @@
 
 <div>
 
-<h2 id="playerName">Player</h2>
+<h2 id="playerName">
+Player
+</h2>
 
-<p id="jobName">未選択</p>
+<p id="jobName">
+未選択
+</p>
 
 </div>
 
@@ -36,12 +95,13 @@
 
 <p>LEVEL</p>
 
-<h1 id="level">1</h1>
+<h1 id="level">
+1
+</h1>
 
 </div>
 
 </header>
-
 
 <section class="status-card">
 
@@ -49,7 +109,9 @@
 
 <span>XP</span>
 
-<span id="xpText">0 / 100</span>
+<span id="xpText">
+0 / 100
+</span>
 
 </div>
 
@@ -65,7 +127,9 @@
 
 <h3>💰 Gold</h3>
 
-<p id="gold">0</p>
+<p id="gold">
+0
+</p>
 
 </div>
 
@@ -73,14 +137,15 @@
 
 <h3>🔥 Restart</h3>
 
-<p id="restart">0</p>
+<p id="restart">
+0
+</p>
 
 </div>
 
 </div>
 
 </section>
-
 
 <section class="quest-card">
 
@@ -92,7 +157,9 @@
 
 <ul id="questList">
 
-<li>クエスト生成中...</li>
+<li>
+クエスト生成中...
+</li>
 
 </ul>
 
@@ -104,26 +171,28 @@ COMPLETE
 
 </section>
 
-
 <nav class="bottom-menu">
 
 <button>🏠</button>
 
 <button>📜</button>
 
-<button>⚔</button>
+<button>⚔️</button>
 
 <button>🎒</button>
 
 <button>🏆</button>
 
-<button>⚙</button>
+<button>⚙️</button>
 
 </nav>
+
+</div>
 
 </div>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
