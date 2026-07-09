@@ -36,6 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const homeScreen = document.getElementById("homeScreen");
 
     const beginBtn = document.getElementById("beginBtn");
+    console.log(beginBtn);
     const jobStartBtn = document.getElementById("jobStartBtn");
     const completeBtn = document.getElementById("completeBtn");
 
