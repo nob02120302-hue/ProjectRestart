@@ -7,10 +7,8 @@ function showScene(sceneId) {
     }
 }
 
-// 職業選択時の動作
+// 職業選択ボタン用
 function selectJob(jobName) {
     console.log("選択した職業: " + jobName);
-    
-    // ここで次のシーン（精霊選択）へ切り替える
     showScene('spirit-scene');
 }
