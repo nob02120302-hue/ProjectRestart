@@ -7,38 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div id="game-container">
-        <!-- 職業選択 -->
         <section id="job-scene" class="scene active">
-            <h1>職業を選択</h1>
-            <button onclick="selectJob('勇者')">勇者</button>
+            <h1>Select Job</h1>
+            <button onclick="selectJob('Hero')">Hero</button>
         </section>
-
-        <!-- 精霊選択 -->
         <section id="spirit-scene" class="scene">
-            <h1>精霊を選んでください</h1>
-            <button onclick="selectSpirit('火の精霊')">火の精霊</button>
+            <h1>Select Spirit</h1>
+            <button onclick="selectSpirit('Fire Spirit')">Fire Spirit</button>
         </section>
-
-        <!-- 冒険開始 -->
         <section id="adventure-scene" class="scene">
-            <h1>冒険へ出発！</h1>
-            <!-- ここでダッシュボードへ遷移 -->
-            <button onclick="showScene('dashboard-scene')">ダッシュボードへ</button>
+            <h1>Start Adventure</h1>
+            <button onclick="showScene('dashboard-scene')">Go to Dashboard</button>
         </section>
-
-        <!-- ★追加：ダッシュボード画面の土台 -->
         <section id="dashboard-scene" class="scene">
-            <div id="dashboard-container">
-                <header><h1>Life Quest RPG</h1></header>
-                <div class="main-layout">
-                    <p>ここにステータスやクエストを表示していきます。</p>
-                </div>
-            </div>
+            <h1>Dashboard</h1>
         </section>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
