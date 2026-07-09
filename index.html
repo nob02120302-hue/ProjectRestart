@@ -24,10 +24,22 @@
             <h1>冒険を開始</h1>
             <button onclick="showScene('dashboard-scene')">ダッシュボードへ</button>
         </section>
-     <section id="dashboard-scene" class="scene">
-            <h1>ダッシュボード</h1>
-            
-            <!-- ここから下の「dashboard-layout」という箱の中にすべてを詰め込みます -->
+    <section id="dashboard-scene" class="scene">
+            <!-- 新設：画像上部のヘッダーエリア -->
+            <div class="header-status">
+                <div class="header-left">
+                    <h1>Life Quest RPG</h1>
+                    <p>LEVEL 12 / 経験値: 1,180 / 1,200</p>
+                    <div class="progress-container"><div class="progress-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="header-right">
+                    <p>HP: 80/100 <span class="bar hp" style="width: 80%;"></span></p>
+                    <p>MP: 50/100 <span class="bar mp" style="width: 50%;"></span></p>
+                </div>
+            </div>
+
+            <!-- 以下、既存のレイアウト -->
+            <div class="dashboard-layout">
            <div class="dashboard-layout">
     <!-- ヘッダー：ステータス -->
     <div class="area-header">
