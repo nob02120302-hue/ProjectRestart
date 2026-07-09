@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- ゲーム全体を覆うコンテナ -->
     <div id="game-container">
 
         <!-- オープニングシーン -->
@@ -16,20 +15,16 @@
             <div class="content">
                 <h1>冒険の始まり</h1>
                 <p>物語がここから動き出す...</p>
+                <button onclick="showScene('job-scene')">冒険を始める</button>
             </div>
         </section>
 
-    <!-- 職業選択シーン -->
-<section id="job-scene" class="scene">
-    <div class="content">
-        <h1>職業を選択してください</h1>
-        <!-- 職業を選ぶボタン -->
-        <button onclick="selectJob('勇者')">勇者</button>
-        <button onclick="selectJob('魔法使い')">魔法使い</button>
-    </div>
-</section>
-    </div>
-</section>
+        <!-- 職業選択シーン -->
+        <section id="job-scene" class="scene">
+            <div class="content">
+                <h1>職業を選択してください</h1>
+                <button onclick="selectJob('勇者')">勇者</button>
+                <button onclick="selectJob('魔法使い')">魔法使い</button>
             </div>
         </section>
 
@@ -37,7 +32,6 @@
         <section id="spirit-scene" class="scene">
             <div class="content">
                 <h1>精霊を選んでください</h1>
-                <!-- ここに精霊選択ボタンを配置 -->
             </div>
         </section>
 
@@ -48,11 +42,10 @@
             </div>
         </section>
 
-        <!-- 最終画面（目標画像の状態） -->
+        <!-- 最終画面 -->
         <section id="final-scene" class="scene">
             <div class="content">
                 <h1>最終目標画面</h1>
-                <!-- ここにあの画像のようなレイアウトを構築 -->
             </div>
         </section>
 
