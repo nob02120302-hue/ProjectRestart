@@ -72,3 +72,27 @@ button:hover { background-color: #555; }
     font-size: 14px;
     margin-top: 10px;
 }
+/* ヘッダー全体の見た目 */
+.header-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-bottom: 2px solid #444;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* 経験値・HP・MPバーの共通スタイル */
+.progress-container { width: 200px; height: 10px; background: #333; border-radius: 5px; }
+.progress-fill { height: 100%; background: #4caf50; border-radius: 5px; }
+
+.bar {
+    display: inline-block;
+    height: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.hp { background-color: #ff4444; width: 80px; }
+.mp { background-color: #4444ff; width: 80px; }
