@@ -368,3 +368,44 @@ transform:scale(1.15);
 background:none;
 
 }
+.dashboard{
+
+display:grid;
+
+grid-template-columns:1fr 1.3fr 1fr;
+
+gap:25px;
+
+margin-top:25px;
+
+}
+
+.left-panel,
+.center-panel,
+.right-panel{
+
+display:flex;
+
+flex-direction:column;
+
+gap:25px;
+
+}
+
+.right-panel .quest-card p{
+
+margin-top:15px;
+
+font-size:18px;
+
+}
+
+@media(max-width:1000px){
+
+.dashboard{
+
+grid-template-columns:1fr;
+
+}
+
+}
