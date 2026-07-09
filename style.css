@@ -1,47 +1,21 @@
-/* style.css - 画面の土台設定 */
+/* style.css */
+/* ...既存の設定はそのままでOKです...*/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    font-family: sans-serif;
-}
-
-/* ゲーム全体の箱 */
-#game-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-/* すべてのシーン共通のスタイル */
+/* 追加・修正：シーンが縦に並ばないようにするための設定 */
 .scene {
-    position: absolute;
+    position: absolute; /* これが重要です！絶対配置で重ねる */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: none; /* 初期はすべて非表示 */
+    display: none;      /* 非表示 */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    background-color: #000; /* 背景を黒くする */
     color: #fff;
 }
 
-/* activeクラスがついているシーンのみ表示 */
 .scene.active {
-    display: flex;
-}
-
-/* コンテンツの内側エリア（必要に応じて調整） */
-.content {
-    width: 80%;
-    max-width: 800px;
+    display: flex;      /* activeがついた時だけ表示 */
 }
