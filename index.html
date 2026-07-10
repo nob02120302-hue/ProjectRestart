@@ -1,80 +1,59 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Quest RPG</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* RPG風のフレームデザイン */
+        .char-panel {
+            width: 320px;
+            border: 4px solid #5D4037; /* 木目調の濃い茶色 */
+            background-color: #EDE0C6; /* 古紙のようなベージュ */
+            padding: 10px;
+            font-family: 'Courier New', monospace; /* RPGっぽいフォント */
+            box-shadow: 5px 5px 0px #3E2723;
+        }
+
+        .char-display {
+            width: 100%;
+            height: 150px;
+            background-color: #333; /* ここに背景画像を差し込む */
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .status-text {
+            font-size: 18px;
+            color: #2E1B0D;
+            margin-bottom: 5px;
+        }
+
+        .bar-container {
+            width: 100%;
+            height: 12px;
+            background: #A1887F;
+            margin-bottom: 8px;
+        }
+
+        .bar-hp { width: 90%; height: 100%; background: #E53935; } /* HPバー */
+        .bar-mp { width: 70%; height: 100%; background: #1E88E5; } /* MPバー */
+    </style>
 </head>
 <body>
-    <div id="game-container">
-       <section id="job-scene" class="scene active">
-            <h1>職業を選択</h1>
-            <button onclick="selectJob('戦士')">戦士</button>
-            <button onclick="selectJob('魔法使い')">魔法使い</button>
-            <button onclick="selectJob('盗賊')">盗賊</button>
-        </section>
-        <section id="spirit-scene" class="scene">
-            <h1>相棒の精霊を選択</h1>
-            <button onclick="selectSpirit('情熱の精霊')">情熱の精霊</button>
-            <button onclick="selectSpirit('冷静の精霊')">冷静の精霊</button>
-            <button onclick="selectSpirit('軽快の精霊')">軽快の精霊</button>
-        </section>
-        <section id="adventure-scene" class="scene">
-            <h1>冒険を開始</h1>
-            <button onclick="showScene('dashboard-scene')">ダッシュボードへ</button>
-        </section>
-    <section id="dashboard-scene" class="scene">
-            <!-- 新設：画像上部のヘッダーエリア -->
-         <div class="header-status" style="display: flex; justify-content: space-between; padding: 20px; color: white; background: #1a1a1a;">
-        <div class="header-left">
-            <h1 style="margin: 0;">Life Quest RPG</h1>
-            <p style="margin: 5px 0;">LEVEL 12 / 経験値: 1,180 / 1,200</p>
-            <!-- 背景を#555にし、白い枠線(border)を追加 -->
-            <div style="width: 200px; height: 12px; background: #555; border: 1px solid white; border-radius: 6px; display: inline-block;">
-                <div style="width: 80%; height: 100%; background: #4caf50; border-radius: 6px;"></div>
-            </div>
-        </div>
-        <div class="header-right" style="text-align: right;">
-            <!-- HP/MPも同様に枠線と背景を調整 -->
-            <p style="margin: 5px 0;">HP: 80/100 <div style="width: 80px; height: 12px; background: #555; border: 1px solid white; border-radius: 6px; display: inline-block;"><div style="width: 80%; height: 100%; background: #ff4444;"></div></div></p>
-            <p style="margin: 5px 0;">MP: 50/100 <div style="width: 80px; height: 12px; background: #555; border: 1px solid white; border-radius: 6px; display: inline-block;"><div style="width: 50%; height: 100%; background: #4444ff;"></div></div></p>
-        </div>
-    </div>
-            <!-- 以下、既存のレイアウト -->
-            <div class="dashboard-layout">
-           <div class="dashboard-layout">
-    <!-- ヘッダー：ステータス -->
-    <div class="area-header">
-        <p>職業: <span id="display-job"></span></p>
-        <p>相棒: <span id="display-spirit"></span></p>
-    </div>
 
-    <!-- 左：タスク一覧 -->
-    <div class="area-tasks">
-    <h3>クエスト報告所</h3>
-    <input type="text" id="task-url" placeholder="達成したURLを入力...">
-    <button onclick="checkTask()">報告する</button>
-    
-    <ul class="task-list">
-        <li id="task-1"><input type="checkbox" disabled> 記事を1本執筆</li>
-    </ul>
+<div class="char-panel">
+    <div class="char-display">
+        <!-- ここに生成した画像（キャラクター＋背景）を表示 -->
+        [キャラクター背景画像エリア]
+    </div>
+    <div class="status-text">Level 12</div>
+    <div class="status-text">EXP: 1,180 / 1,200</div>
+    <div>HP</div>
+    <div class="bar-container"><div class="bar-hp"></div></div>
+    <div>MP</div>
+    <div class="bar-container"><div class="bar-mp"></div></div>
 </div>
 
-    <!-- 右：統計・グラフ -->
-    <div class="area-stats">
-        <h3>統計グラフ</h3>
-        <p>Lv.1 冒険者</p>
-    </div>
-
-    <!-- 下：ショップ -->
-    <div class="area-shop">
-        <h3>冒険者ショップ</h3>
-        <button class="shop-btn">ポーション購入</button>
-    </div>
-</div>
-            <!-- ここまで -->
-        </section>
-    <script src="script.js"></script>
 </body>
 </html>
