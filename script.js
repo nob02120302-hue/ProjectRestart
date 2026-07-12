@@ -40,3 +40,36 @@ function checkTask() {
         alert("URLが正しくありません");
     }
 }
+// ----------------
+// note URL クエスト判定
+// ----------------
+
+function checkTask() {
+
+    const urlInput = document.getElementById("task-url");
+
+    if (!urlInput) {
+        return;
+    }
+
+    const noteUrl = urlInput.value.trim();
+
+    if (noteUrl.includes("note.com")) {
+
+        alert("🎉 クエスト達成！");
+
+        player.xp += 25;
+        player.gold += 10;
+
+        savePlayer();
+        openHome();
+
+        urlInput.value = "";
+
+    } else {
+
+        alert("noteのURLを入力してください");
+
+    }
+
+}
