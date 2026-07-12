@@ -114,27 +114,29 @@ genderStartBtn.onclick = function () {
 
     };
 
-    function openHome() {
-
-        titleScreen.classList.add("hidden");
-        jobScreen.classList.add("hidden");
-        homeScreen.classList.remove("hidden");
+   function openHome() {
+        // ...（省略）
 
         setText("playerName", player.name);
         setText("jobName", jobs[player.job]);
-        const characterIcon =
-    characterIcons[player.gender][player.job];
 
-// 変更後
-const fileName = `${player.gender}-${player.job}.png`;
+        // ★ここをこう書き換えます
+        const fileName = `${player.gender}-${player.job}.png`;
+        const charHtml = `<img src="./${fileName}" style="width: 100%; height: 100%; object-fit: contain;">`;
 
-if (avatar) {
-    avatar.innerHTML = `<img src="./${fileName}" style="width:100%; height:100%; object-fit:contain;">`;
-}
+        const avatar = document.querySelector(".avatar");
+        const characterPlaceholder = document.querySelector(".character-placeholder");
 
-if (characterPlaceholder) {
-    characterPlaceholder.innerHTML = `<img src="./${fileName}" style="width:100%; height:100%; object-fit:contain;">`;
-} 
+        if (avatar) {
+            avatar.innerHTML = charHtml;
+        }
+
+        if (characterPlaceholder) {
+            characterPlaceholder.innerHTML = charHtml;
+        }
+        
+        // ...（省略）
+    }
         const genderText =
     player.gender === "male" ? "男性" : "女性";
 
