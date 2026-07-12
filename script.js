@@ -125,17 +125,16 @@ genderStartBtn.onclick = function () {
         const characterIcon =
     characterIcons[player.gender][player.job];
 
-const avatar = document.querySelector(".avatar");
-const characterPlaceholder =
-    document.querySelector(".character-placeholder");
+// 変更後
+const fileName = `${player.gender}-${player.job}.png`;
 
 if (avatar) {
-    avatar.textContent = characterIcon;
+    avatar.innerHTML = `<img src="./${fileName}" style="width:100%; height:100%; object-fit:contain;">`;
 }
 
 if (characterPlaceholder) {
-    characterPlaceholder.textContent = characterIcon;
-}
+    characterPlaceholder.innerHTML = `<img src="./${fileName}" style="width:100%; height:100%; object-fit:contain;">`;
+} 
         const genderText =
     player.gender === "male" ? "男性" : "女性";
 
