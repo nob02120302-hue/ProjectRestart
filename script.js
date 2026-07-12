@@ -89,18 +89,24 @@ window.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    function openHome() {
+  function openHome() {
         setText("playerName", player.name);
         setText("jobName", jobs[player.job]);
 
-        // 画像の読み込み
+        // ファイル名の生成
         const fileName = `${player.gender}-${player.job}.png`;
-        const charHtml = `<img src="./${fileName}" style="width: 100%; height: 100%; object-fit: contain;">`;
-
+        
+        // 左上のavatarだけを更新する
+        const charHtml = `<img src="./${fileName}" style="width: 50px; height: 50px; object-fit: contain;">`;
         const avatar = document.querySelector(".avatar");
-        const characterPlaceholder = document.querySelector(".character-placeholder");
         if (avatar) avatar.innerHTML = charHtml;
-        if (characterPlaceholder) characterPlaceholder.innerHTML = charHtml;
+
+        // 中央のcharacter-placeholderは空にする（または非表示にする）
+        const characterPlaceholder = document.querySelector(".character-placeholder");
+        if (characterPlaceholder) {
+            characterPlaceholder.innerHTML = ""; // 中身を消す
+            characterPlaceholder.style.display = "none"; // 表示自体を消す
+        }
 
         setText("genderName", player.gender === "male" ? "男性" : "女性");
         setText("level", player.level);
@@ -108,7 +114,6 @@ window.addEventListener("DOMContentLoaded", function () {
         setText("restart", player.restart);
         setText("xpText", player.xp + " / " + player.xpMax + " XP");
         
-        // 追加: status-grid側のIDも更新する場合
         setText("levelStat", player.level);
         setText("goldStat", player.gold);
         setText("restartStat", player.restart);
@@ -121,7 +126,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         generateQuest();
     }
-
     function setText(id, value) {
         const element = document.getElementById(id);
         if (element) element.textContent = value;
