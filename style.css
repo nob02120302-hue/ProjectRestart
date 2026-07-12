@@ -300,3 +300,15 @@ button {
         font-size: 20px;
     }
 }
+.gender {
+    padding: 20px 10px;
+    background: #fffaf0;
+    border: 2px solid #c9b78f;
+    cursor: pointer;
+}
+
+.gender.selected {
+    background: #fff0b8;
+    border-color: #b8872d;
+    transform: translateY(-4px);
+}
