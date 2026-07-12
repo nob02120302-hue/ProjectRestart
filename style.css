@@ -1,124 +1,302 @@
-/* style.css */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body { 
-    width: 100%; 
-    height: 100vh; 
-    background-color: #000; 
-    color: #fff; 
-    font-family: sans-serif; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#game-container { 
-    text-align: center; 
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #08111b;
+    color: #2d2a24;
 }
 
-.scene { display: none; }
-.scene.active { display: block; }
-
-button {
-    padding: 15px 30px;
-    font-size: 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    background-color: #333;
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 5px;
+.hidden {
+    display: none !important;
 }
 
-button:hover { background-color: #555; }
-
-/* --- ダッシュボード用レイアウト --- */
-.dashboard-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 15px;
-    padding: 15px;
-    background-color: #1a1a1a;
-    color: white;
-    text-align: left;
+.screen {
+    width: 100%;
+    min-height: 100vh;
 }
 
-.area-header, .area-tasks, .area-stats, .area-shop {
-    background-color: #2d2d2d;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #444;
-}
-
-.area-header { grid-column: 1 / 3; }
-.area-shop { grid-column: 1 / 3; }
-/* タスクリストの見た目 */
-.task-list {
-    list-style: none;
-    margin-top: 10px;
-}
-
-.task-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid #444;
+#titleScreen,
+#jobScreen {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-}
-
-/* ショップボタンの見た目 */
-.shop-btn {
-    padding: 8px 16px;
-    font-size: 14px;
-    margin-top: 10px;
-}
-/* ヘッダー全体の見た目 */
-.header-status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1a1a1a;
     padding: 20px;
-    border-bottom: 2px solid #444;
-    color: #fff;
+    background:
+        radial-gradient(circle at top, #17324a, #071019 70%);
+}
+
+.hero-card {
+    width: 100%;
+    max-width: 620px;
+    padding: 40px;
+    text-align: center;
+    background: #f5eedc;
+    border: 3px solid #b89552;
+    border-radius: 8px;
+    box-shadow: 0 15px 50px #000;
+}
+
+.hero-card h1 {
+    color: #17354d;
     margin-bottom: 15px;
 }
 
-/* 経験値・HP・MPバーの共通スタイル */
-.progress-container { width: 200px; height: 10px; background: #333; border-radius: 5px; }
-.progress-fill { height: 100%; background: #4caf50; border-radius: 5px; }
+.hero-card p {
+    margin-bottom: 25px;
+}
 
-.bar {
-    display: inline-block;
-    height: 10px;
+button {
+    border: 0;
+    padding: 13px 25px;
+    cursor: pointer;
+    font-weight: bold;
     border-radius: 5px;
-    margin-left: 10px;
-}
-.hp { background-color: #ff4444; width: 80px; }
-.mp { background-color: #4444ff; width: 80px; }
-/* バーの見た目 */
-.progress-container {
-    width: 200px;
-    height: 12px;
-    background: #333;
-    border-radius: 6px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
+    background: #b8872d;
+    color: white;
 }
 
-.progress-fill {
+.job-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.job {
+    padding: 20px 10px;
+    background: #fffaf0;
+    border: 2px solid #c9b78f;
+    cursor: pointer;
+}
+
+.job.selected {
+    background: #fff0b8;
+    border-color: #b8872d;
+    transform: translateY(-4px);
+}
+
+#homeScreen {
+    background: #08111b;
+    padding: 18px 18px 100px;
+}
+
+.app {
+    width: 100%;
+    max-width: 1180px;
+    margin: auto;
+    background: #e9e0c9;
+    border: 3px solid #a88445;
+    box-shadow: 0 0 30px #000;
+}
+
+.top-card {
+    min-height: 145px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #102a3d, #07151f);
+    color: white;
+    border-bottom: 4px solid #b58b42;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    background: #d7c28d;
+    border: 3px solid #d2a94f;
+    border-radius: 4px;
+}
+
+#playerName {
+    font-size: 25px;
+}
+
+#welcome {
+    color: #e5c66c;
+    margin: 5px 0;
+}
+
+#jobName {
+    color: #cbd7df;
+}
+
+.level-box {
+    width: 110px;
+    text-align: center;
+    padding: 12px;
+    border: 2px solid #c99d45;
+    background: #091722;
+}
+
+.level-box p {
+    font-size: 12px;
+    color: #d6b65d;
+}
+
+.level-box h1 {
+    font-size: 52px;
+    color: white;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 12px;
+    padding: 12px;
+}
+
+.status-card,
+.quest-card {
     height: 100%;
-    background: #4caf50;
-    border-radius: 6px;
+    padding: 18px;
+    background: #f8f3e7;
+    border: 1px solid #bcae8c;
+    box-shadow: inset 0 0 0 3px #eee5d1;
 }
 
-.bar {
-    display: inline-block;
-    height: 12px;
-    border-radius: 6px;
-    vertical-align: middle;
-    margin-left: 10px;
+.xp-title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
-.hp { background-color: #ff4444; width: 80px; }
-.mp { background-color: #4444ff; width: 80px; }
+
+.xpBar {
+    height: 16px;
+    overflow: hidden;
+    background: #c9c0a9;
+    border: 1px solid #7d7158;
+    margin-bottom: 18px;
+}
+
+#xpFill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #2d7f59, #6bb477);
+    transition: width .4s;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.status-item {
+    padding: 14px 5px;
+    text-align: center;
+    background: #eee5d2;
+    border: 1px solid #c4b590;
+}
+
+.status-item h3 {
+    font-size: 13px;
+}
+
+.status-item p {
+    margin-top: 8px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #8b6424;
+}
+
+.quest-card h2 {
+    font-size: 18px;
+    color: #17384e;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #c8b789;
+}
+
+#questList {
+    list-style: none;
+    min-height: 90px;
+}
+
+#questList li {
+    padding: 13px;
+    background: #eee7d6;
+    border-left: 5px solid #ba8b34;
+}
+
+#completeBtn {
+    width: 100%;
+    margin-top: 15px;
+    background: #2e7658;
+    border-bottom: 4px solid #194b37;
+}
+
+.right-panel .quest-card p {
+    padding: 10px 5px;
+    border-bottom: 1px solid #d5cab1;
+}
+
+.bottom-menu {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1180px;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #071722;
+    border-top: 3px solid #b58b42;
+    z-index: 10;
+}
+
+.bottom-menu button {
+    padding: 10px 16px;
+    font-size: 25px;
+    background: transparent;
+}
+
+@media (max-width: 800px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .job-list {
+        grid-template-columns: 1fr;
+    }
+
+    .top-card {
+        min-height: 120px;
+    }
+
+    .avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 35px;
+    }
+
+    .level-box {
+        width: 80px;
+    }
+
+    .level-box h1 {
+        font-size: 38px;
+    }
+
+    .bottom-menu button {
+        padding: 8px;
+        font-size: 20px;
+    }
+}
