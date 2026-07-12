@@ -29,12 +29,14 @@ const dailyQuestPool = [
 window.addEventListener("DOMContentLoaded", function () {
 
     const titleScreen = document.getElementById("titleScreen");
-    const jobScreen = document.getElementById("jobScreen");
-    const homeScreen = document.getElementById("homeScreen");
+const genderScreen = document.getElementById("genderScreen");
+const jobScreen = document.getElementById("jobScreen");
+const homeScreen = document.getElementById("homeScreen");
 
-    const beginBtn = document.getElementById("beginBtn");
-    const jobStartBtn = document.getElementById("jobStartBtn");
-    const completeBtn = document.getElementById("completeBtn");
+   const beginBtn = document.getElementById("beginBtn");
+const genderStartBtn = document.getElementById("genderStartBtn");
+const jobStartBtn = document.getElementById("jobStartBtn");
+const completeBtn = document.getElementById("completeBtn");
 
     let selectedJob = "";
 
