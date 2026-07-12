@@ -9,7 +9,11 @@ let player = {
     gold: 0,
     restart: 0
 };
-
+const jobs = {
+    warrior: "⚔️ 戦士",
+    wizard: "🔮 魔法使い",
+    thief: "🗡️ 盗賊"
+};
 const jobIcons = {
     warrior: "⚔️",
     wizard: "🔮",
