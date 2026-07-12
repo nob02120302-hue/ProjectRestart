@@ -39,12 +39,40 @@ const jobStartBtn = document.getElementById("jobStartBtn");
 const completeBtn = document.getElementById("completeBtn");
 
     let selectedJob = "";
-
+let selectedGender = "";
     beginBtn.onclick = function () {
-        titleScreen.classList.add("hidden");
-        jobScreen.classList.remove("hidden");
+    titleScreen.classList.add("hidden");
+    genderScreen.classList.remove("hidden");
+};
+document.querySelectorAll(".gender").forEach(function (card) {
+
+    card.onclick = function () {
+
+        document.querySelectorAll(".gender").forEach(function (gender) {
+            gender.classList.remove("selected");
+        });
+
+        card.classList.add("selected");
+
+        selectedGender = card.getAttribute("data-gender");
+
     };
 
+});
+
+genderStartBtn.onclick = function () {
+
+    if (selectedGender === "") {
+        alert("性別を選択してください");
+        return;
+    }
+
+    player.gender = selectedGender;
+
+    genderScreen.classList.add("hidden");
+    jobScreen.classList.remove("hidden");
+
+};
     document.querySelectorAll(".job").forEach(function (card) {
 
         card.onclick = function () {
