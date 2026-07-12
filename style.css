@@ -332,3 +332,35 @@ button {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
+/* メニューバーのスタイル */
+.top-menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333; /* 背景色 */
+    padding: 10px;
+    position: sticky;      /* 画面上部に固定する場合 */
+    top: 0;
+    z-index: 1000;
+}
+
+.top-menu button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.top-menu button:hover {
+    color: #ffd700; /* マウスを乗せると黄色になる */
+}
+
+/* 画面切り替え用のクラス */
+.screen {
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
