@@ -28,7 +28,6 @@ const dailyQuestPool = [
 ];
 
 window.addEventListener("DOMContentLoaded", function () {
-
     const titleScreen = document.getElementById("titleScreen");
     const genderScreen = document.getElementById("genderScreen");
     const jobScreen = document.getElementById("jobScreen");
@@ -42,71 +41,77 @@ window.addEventListener("DOMContentLoaded", function () {
     let selectedJob = "";
     let selectedGender = "";
 
-    beginBtn.onclick = function () {
-        titleScreen.classList.add("hidden");
-        genderScreen.classList.remove("hidden");
-    };
+    if (beginBtn) {
+        beginBtn.onclick = function () {
+            titleScreen.classList.add("hidden");
+            genderScreen.classList.remove("hidden");
+        };
+    }
 
     document.querySelectorAll(".gender").forEach(function (card) {
         card.onclick = function () {
-            document.querySelectorAll(".gender").forEach(function (gender) {
-                gender.classList.remove("selected");
-            });
+            document.querySelectorAll(".gender").forEach(g => g.classList.remove("selected"));
             card.classList.add("selected");
             selectedGender = card.getAttribute("data-gender");
         };
     });
 
-    genderStartBtn.onclick = function () {
-        if (selectedGender === "") {
-            alert("性別を選択してください");
-            return;
-        }
-        player.gender = selectedGender;
-        genderScreen.classList.add("hidden");
-        jobScreen.classList.remove("hidden");
-    };
+    if (genderStartBtn) {
+        genderStartBtn.onclick = function () {
+            if (selectedGender === "") {
+                alert("性別を選択してください");
+                return;
+            }
+            player.gender = selectedGender;
+            genderScreen.classList.add("hidden");
+            jobScreen.classList.remove("hidden");
+        };
+    }
 
     document.querySelectorAll(".job").forEach(function (card) {
         card.onclick = function () {
-            document.querySelectorAll(".job").forEach(function (job) {
-                job.classList.remove("selected");
-            });
+            document.querySelectorAll(".job").forEach(j => j.classList.remove("selected"));
             card.classList.add("selected");
             selectedJob = card.getAttribute("data-job");
         };
     });
 
-    jobStartBtn.onclick = function () {
-        if (selectedJob === "") {
-            alert("ジョブを選択してください");
-            return;
-        }
-        player.job = selectedJob;
-        jobScreen.classList.add("hidden");
-        homeScreen.classList.remove("hidden");
-        openHome();
-    };
+    if (jobStartBtn) {
+        jobStartBtn.onclick = function () {
+            if (selectedJob === "") {
+                alert("ジョブを選択してください");
+                return;
+            }
+            player.job = selectedJob;
+            jobScreen.classList.add("hidden");
+            homeScreen.classList.remove("hidden");
+            openHome();
+        };
+    }
 
     function openHome() {
         setText("playerName", player.name);
         setText("jobName", jobs[player.job]);
 
+        // 画像の読み込み
         const fileName = `${player.gender}-${player.job}.png`;
         const charHtml = `<img src="./${fileName}" style="width: 100%; height: 100%; object-fit: contain;">`;
 
         const avatar = document.querySelector(".avatar");
         const characterPlaceholder = document.querySelector(".character-placeholder");
-
         if (avatar) avatar.innerHTML = charHtml;
         if (characterPlaceholder) characterPlaceholder.innerHTML = charHtml;
 
-        const genderText = player.gender === "male" ? "男性" : "女性";
-        setText("genderName", genderText);
+        setText("genderName", player.gender === "male" ? "男性" : "女性");
         setText("level", player.level);
         setText("gold", player.gold);
         setText("restart", player.restart);
         setText("xpText", player.xp + " / " + player.xpMax + " XP");
+        
+        // 追加: status-grid側のIDも更新する場合
+        setText("levelStat", player.level);
+        setText("goldStat", player.gold);
+        setText("restartStat", player.restart);
 
         const welcome = document.getElementById("welcome");
         if (welcome) welcome.textContent = "ようこそ、" + jobs[player.job] + "！";
@@ -125,8 +130,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function generateQuest() {
         const questList = document.getElementById("questList");
         if (!questList) return;
-        const randomIndex = Math.floor(Math.random() * dailyQuestPool.length);
-        const quest = dailyQuestPool[randomIndex];
+        const quest = dailyQuestPool[Math.floor(Math.random() * dailyQuestPool.length)];
         questList.innerHTML = "<li>☐ " + quest + "</li>";
     }
 
