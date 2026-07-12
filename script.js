@@ -14,10 +14,18 @@ const jobs = {
     wizard: "🔮 魔法使い",
     thief: "🗡️ 盗賊"
 };
-const jobIcons = {
-    warrior: "⚔️",
-    wizard: "🔮",
-    thief: "🗡️"
+const characterIcons = {
+    male: {
+        warrior: "⚔️👨",
+        wizard: "🔮👨",
+        thief: "🗡️👨"
+    },
+
+    female: {
+        warrior: "⚔️👩",
+        wizard: "🔮👩",
+        thief: "🗡️👩"
+    }
 };
 const dailyQuestPool = [
     "AIで記事構成を考える",
