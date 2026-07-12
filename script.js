@@ -114,6 +114,10 @@ genderStartBtn.onclick = function () {
 
         setText("playerName", player.name);
         setText("jobName", jobs[player.job]);
+        const genderText =
+    player.gender === "male" ? "男性" : "女性";
+
+setText("genderName", genderText);
         setText("level", player.level);
         setText("gold", player.gold);
         setText("restart", player.restart);
