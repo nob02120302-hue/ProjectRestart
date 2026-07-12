@@ -10,12 +10,11 @@ let player = {
     restart: 0
 };
 
-const jobs = {
-    warrior: "⚔ 戦士",
-    wizard: "🧙 賢者",
-    bard: "🎵 吟遊詩人"
+const jobIcons = {
+    warrior: "⚔️",
+    wizard: "🔮",
+    thief: "🗡️"
 };
-
 const dailyQuestPool = [
     "AIで記事構成を考える",
     "500文字以上書く",
