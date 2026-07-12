@@ -152,3 +152,19 @@ window.addEventListener("DOMContentLoaded", function () {
         };
     }
 });
+// ...（今までのコードがここにある）
+
+window.addEventListener("DOMContentLoaded", function () {
+    // ...（中略）
+});
+
+// ★ここに追記します
+function showScreen(screenId) {
+    // 全ての画面を非表示にする
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    // 指定した画面だけ表示する
+    const target = document.getElementById(screenId);
+    if (target) {
+        target.classList.remove('hidden');
+    }
+}
