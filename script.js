@@ -1,4 +1,4 @@
-console.log("Project Restart 起動");
+console.log("Project Restart START");
 
 let player = {
     name: "Player",
@@ -27,7 +27,7 @@ const dailyQuestPool = [
     "AIにアイデアを10個出してもらう"
 ];
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", function () {
 
     const titleScreen = document.getElementById("titleScreen");
     const jobScreen = document.getElementById("jobScreen");
@@ -39,28 +39,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let selectedJob = "";
 
-    beginBtn.addEventListener("click", () => {
+    beginBtn.onclick = function () {
         titleScreen.classList.add("hidden");
         jobScreen.classList.remove("hidden");
-    });
+    };
 
-    document.querySelectorAll(".job").forEach(card => {
+    document.querySelectorAll(".job").forEach(function (card) {
 
-        card.addEventListener("click", () => {
+        card.onclick = function () {
 
-            document.querySelectorAll(".job").forEach(job => {
+            document.querySelectorAll(".job").forEach(function (job) {
                 job.classList.remove("selected");
             });
 
             card.classList.add("selected");
 
-            selectedJob = card.dataset.job;
+            selectedJob = card.getAttribute("data-job");
 
-        });
+        };
 
     });
 
-    jobStartBtn.addEventListener("click", () => {
+    jobStartBtn.onclick = function () {
 
         if (selectedJob === "") {
             alert("ジョブを選択してください");
@@ -71,7 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         openHome();
 
-    });
+    };
 
     function openHome() {
 
@@ -79,30 +79,24 @@ window.addEventListener("DOMContentLoaded", () => {
         jobScreen.classList.add("hidden");
         homeScreen.classList.remove("hidden");
 
+        setText("playerName", player.name);
+        setText("jobName", jobs[player.job]);
+        setText("level", player.level);
+        setText("gold", player.gold);
+        setText("restart", player.restart);
+        setText(
+            "xpText",
+            player.xp + " / " + player.xpMax + " XP"
+        );
+
         const welcome = document.getElementById("welcome");
-        const playerName = document.getElementById("playerName");
-        const jobName = document.getElementById("jobName");
-        const level = document.getElementById("level");
-        const gold = document.getElementById("gold");
-        const restart = document.getElementById("restart");
-        const xpText = document.getElementById("xpText");
-        const xpFill = document.getElementById("xpFill");
 
         if (welcome) {
             welcome.textContent =
                 "ようこそ、" + jobs[player.job] + "！";
         }
 
-        if (playerName) playerName.textContent = player.name;
-        if (jobName) jobName.textContent = jobs[player.job];
-        if (level) level.textContent = player.level;
-        if (gold) gold.textContent = player.gold;
-        if (restart) restart.textContent = player.restart;
-
-        if (xpText) {
-            xpText.textContent =
-                player.xp + " / " + player.xpMax + " XP";
-        }
+        const xpFill = document.getElementById("xpFill");
 
         if (xpFill) {
             xpFill.style.width =
@@ -113,25 +107,43 @@ window.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    function setText(id, value) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.textContent = value;
+        }
+
+    }
+
     function generateQuest() {
 
         const questList = document.getElementById("questList");
 
-        if (!questList) return;
+        if (!questList) {
+            return;
+        }
 
-        const quest =
-            dailyQuestPool[
-                Math.floor(Math.random() * dailyQuestPool.length)
-            ];
+        const randomIndex = Math.floor(
+            Math.random() * dailyQuestPool.length
+        );
 
-        questList.innerHTML =
-            "<li>☐ " + quest + "</li>";
+        const quest = dailyQuestPool[randomIndex];
+
+        questList.innerHTML = "";
+
+        const li = document.createElement("li");
+
+        li.textContent = "☐ " + quest;
+
+        questList.appendChild(li);
 
     }
 
     if (completeBtn) {
 
-        completeBtn.addEventListener("click", () => {
+        completeBtn.onclick = function () {
 
             player.xp += 25;
             player.gold += 10;
@@ -139,7 +151,7 @@ window.addEventListener("DOMContentLoaded", () => {
             if (player.xp >= player.xpMax) {
 
                 player.xp -= player.xpMax;
-                player.level++;
+                player.level += 1;
                 player.xpMax += 50;
 
                 alert("🎉 LEVEL UP!");
@@ -148,7 +160,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             openHome();
 
-        });
+        };
 
     }
 
