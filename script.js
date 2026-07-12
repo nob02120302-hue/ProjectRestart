@@ -9,24 +9,13 @@ let player = {
     gold: 0,
     restart: 0
 };
+
 const jobs = {
     warrior: "⚔️ 戦士",
     wizard: "🔮 魔法使い",
     thief: "🗡️ 盗賊"
 };
-const characterIcons = {
-    male: {
-        warrior: "⚔️👨",
-        wizard: "🔮👨",
-        thief: "🗡️👨"
-    },
 
-    female: {
-        warrior: "⚔️👩",
-        wizard: "🔮👩",
-        thief: "🗡️👩"
-    }
-};
 const dailyQuestPool = [
     "AIで記事構成を考える",
     "500文字以上書く",
@@ -41,187 +30,117 @@ const dailyQuestPool = [
 window.addEventListener("DOMContentLoaded", function () {
 
     const titleScreen = document.getElementById("titleScreen");
-const genderScreen = document.getElementById("genderScreen");
-const jobScreen = document.getElementById("jobScreen");
-const homeScreen = document.getElementById("homeScreen");
+    const genderScreen = document.getElementById("genderScreen");
+    const jobScreen = document.getElementById("jobScreen");
+    const homeScreen = document.getElementById("homeScreen");
 
-   const beginBtn = document.getElementById("beginBtn");
-const genderStartBtn = document.getElementById("genderStartBtn");
-const jobStartBtn = document.getElementById("jobStartBtn");
-const completeBtn = document.getElementById("completeBtn");
+    const beginBtn = document.getElementById("beginBtn");
+    const genderStartBtn = document.getElementById("genderStartBtn");
+    const jobStartBtn = document.getElementById("jobStartBtn");
+    const completeBtn = document.getElementById("completeBtn");
 
     let selectedJob = "";
-let selectedGender = "";
+    let selectedGender = "";
+
     beginBtn.onclick = function () {
-    titleScreen.classList.add("hidden");
-    genderScreen.classList.remove("hidden");
-};
-document.querySelectorAll(".gender").forEach(function (card) {
-
-    card.onclick = function () {
-
-        document.querySelectorAll(".gender").forEach(function (gender) {
-            gender.classList.remove("selected");
-        });
-
-        card.classList.add("selected");
-
-        selectedGender = card.getAttribute("data-gender");
-
+        titleScreen.classList.add("hidden");
+        genderScreen.classList.remove("hidden");
     };
 
-});
-
-genderStartBtn.onclick = function () {
-
-    if (selectedGender === "") {
-        alert("性別を選択してください");
-        return;
-    }
-
-    player.gender = selectedGender;
-
-    genderScreen.classList.add("hidden");
-    jobScreen.classList.remove("hidden");
-
-};
-    document.querySelectorAll(".job").forEach(function (card) {
-
+    document.querySelectorAll(".gender").forEach(function (card) {
         card.onclick = function () {
+            document.querySelectorAll(".gender").forEach(function (gender) {
+                gender.classList.remove("selected");
+            });
+            card.classList.add("selected");
+            selectedGender = card.getAttribute("data-gender");
+        };
+    });
 
+    genderStartBtn.onclick = function () {
+        if (selectedGender === "") {
+            alert("性別を選択してください");
+            return;
+        }
+        player.gender = selectedGender;
+        genderScreen.classList.add("hidden");
+        jobScreen.classList.remove("hidden");
+    };
+
+    document.querySelectorAll(".job").forEach(function (card) {
+        card.onclick = function () {
             document.querySelectorAll(".job").forEach(function (job) {
                 job.classList.remove("selected");
             });
-
             card.classList.add("selected");
-
             selectedJob = card.getAttribute("data-job");
-
         };
-
     });
 
     jobStartBtn.onclick = function () {
-
         if (selectedJob === "") {
             alert("ジョブを選択してください");
             return;
         }
-
         player.job = selectedJob;
-
+        jobScreen.classList.add("hidden");
+        homeScreen.classList.remove("hidden");
         openHome();
-
     };
 
-   function openHome() {
-        // ...（省略）
-
+    function openHome() {
         setText("playerName", player.name);
         setText("jobName", jobs[player.job]);
 
-        // ★ここをこう書き換えます
         const fileName = `${player.gender}-${player.job}.png`;
         const charHtml = `<img src="./${fileName}" style="width: 100%; height: 100%; object-fit: contain;">`;
 
         const avatar = document.querySelector(".avatar");
         const characterPlaceholder = document.querySelector(".character-placeholder");
 
-        if (avatar) {
-            avatar.innerHTML = charHtml;
-        }
+        if (avatar) avatar.innerHTML = charHtml;
+        if (characterPlaceholder) characterPlaceholder.innerHTML = charHtml;
 
-        if (characterPlaceholder) {
-            characterPlaceholder.innerHTML = charHtml;
-        }
-        
-        // ...（省略）
-    }
-        const genderText =
-    player.gender === "male" ? "男性" : "女性";
-
-setText("genderName", genderText);
+        const genderText = player.gender === "male" ? "男性" : "女性";
+        setText("genderName", genderText);
         setText("level", player.level);
         setText("gold", player.gold);
         setText("restart", player.restart);
-        setText(
-            "xpText",
-            player.xp + " / " + player.xpMax + " XP"
-        );
+        setText("xpText", player.xp + " / " + player.xpMax + " XP");
 
         const welcome = document.getElementById("welcome");
-
-        if (welcome) {
-            welcome.textContent =
-                "ようこそ、" + jobs[player.job] + "！";
-        }
+        if (welcome) welcome.textContent = "ようこそ、" + jobs[player.job] + "！";
 
         const xpFill = document.getElementById("xpFill");
-
-        if (xpFill) {
-            xpFill.style.width =
-                (player.xp / player.xpMax * 100) + "%";
-        }
+        if (xpFill) xpFill.style.width = (player.xp / player.xpMax * 100) + "%";
 
         generateQuest();
-
     }
 
     function setText(id, value) {
-
         const element = document.getElementById(id);
-
-        if (element) {
-            element.textContent = value;
-        }
-
+        if (element) element.textContent = value;
     }
 
     function generateQuest() {
-
         const questList = document.getElementById("questList");
-
-        if (!questList) {
-            return;
-        }
-
-        const randomIndex = Math.floor(
-            Math.random() * dailyQuestPool.length
-        );
-
+        if (!questList) return;
+        const randomIndex = Math.floor(Math.random() * dailyQuestPool.length);
         const quest = dailyQuestPool[randomIndex];
-
-        questList.innerHTML = "";
-
-        const li = document.createElement("li");
-
-        li.textContent = "☐ " + quest;
-
-        questList.appendChild(li);
-
+        questList.innerHTML = "<li>☐ " + quest + "</li>";
     }
 
     if (completeBtn) {
-
         completeBtn.onclick = function () {
-
             player.xp += 25;
             player.gold += 10;
-
             if (player.xp >= player.xpMax) {
-
                 player.xp -= player.xpMax;
                 player.level += 1;
                 player.xpMax += 50;
-
                 alert("🎉 LEVEL UP!");
-
             }
-
             openHome();
-
         };
-
     }
-
 });
