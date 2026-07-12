@@ -33,10 +33,9 @@
             noteを書くことを、冒険に変える。
         </p>
 
-      <button id="beginBtn" onclick="document.getElementById('titleScreen').classList.add('hidden'); document.getElementById('jobScreen').classList.remove('hidden');">
+     <button id="beginBtn">
     冒険を始める
 </button>
-
     </div>
 
 </div>
@@ -82,34 +81,22 @@
 
         <div class="job-list">
 
-            <div class="job" data-job="warrior">
+    <div class="job" data-job="warrior">
+        <h3>⚔️ 戦士</h3>
+        <p>投稿速度を武器に戦う</p>
+    </div>
 
-                <h3>⚔ 戦士</h3>
+    <div class="job" data-job="wizard">
+        <h3>🔮 魔法使い</h3>
+        <p>AIと魔法を操る</p>
+    </div>
 
-                <p>投稿速度を武器に戦う</p>
+    <div class="job" data-job="thief">
+        <h3>🗡️ 盗賊</h3>
+        <p>アイデアと機転で道を切り開く</p>
+    </div>
 
-            </div>
-
-
-            <div class="job" data-job="wizard">
-
-                <h3>🧙 賢者</h3>
-
-                <p>AIと知識を操る</p>
-
-            </div>
-
-
-            <div class="job" data-job="bard">
-
-                <h3>🎵 吟遊詩人</h3>
-
-                <p>物語を世界へ届ける</p>
-
-            </div>
-
-        </div>
-
+</div>
 
         <button id="jobStartBtn">
             このジョブで始める
