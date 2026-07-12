@@ -1,7 +1,5 @@
 console.log("Project Restart 起動");
 
-// ===== プレイヤー =====
-
 let player = {
     name: "Player",
     job: "",
@@ -41,32 +39,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let selectedJob = "";
 
-    // セーブ
-    function savePlayer() {
-        localStorage.setItem(
-            "projectRestart",
-            JSON.stringify(player)
-        );
-    }
-
-    // ロード
-    function loadPlayer() {
-        const save = localStorage.getItem("projectRestart");
-
-        if (save) {
-            player = JSON.parse(save);
-        }
-    }
-
-    // タイトル → ジョブ選択
     beginBtn.addEventListener("click", () => {
-
         titleScreen.classList.add("hidden");
         jobScreen.classList.remove("hidden");
-
     });
 
-    // ジョブ選択
     document.querySelectorAll(".job").forEach(card => {
 
         card.addEventListener("click", () => {
@@ -79,13 +56,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
             selectedJob = card.dataset.job;
 
-            console.log("選択ジョブ:", selectedJob);
-
         });
 
     });
 
-    // 冒険開始
     jobStartBtn.addEventListener("click", () => {
 
         if (selectedJob === "") {
@@ -95,13 +69,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
         player.job = selectedJob;
 
-        savePlayer();
-
         openHome();
 
     });
 
-    // ホーム
     function openHome() {
 
         titleScreen.classList.add("hidden");
@@ -142,51 +113,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // クエスト
     function generateQuest() {
 
-        const questList =
-            document.getElementById("questList");
+        const questList = document.getElementById("questList");
 
         if (!questList) return;
 
-        const today =
-            new Date().toLocaleDateString();
-
-        let quest =
-            localStorage.getItem("dailyQuest");
-
-        const questDate =
-            localStorage.getItem("questDate");
-
-        if (!quest || questDate !== today) {
-
-            quest =
-                dailyQuestPool[
-                    Math.floor(
-                        Math.random() *
-                        dailyQuestPool.length
-                    )
-                ];
-
-            localStorage.setItem(
-                "dailyQuest",
-                quest
-            );
-
-            localStorage.setItem(
-                "questDate",
-                today
-            );
-
-        }
+        const quest =
+            dailyQuestPool[
+                Math.floor(Math.random() * dailyQuestPool.length)
+            ];
 
         questList.innerHTML =
             "<li>☐ " + quest + "</li>";
 
     }
 
-    // クエスト達成
     if (completeBtn) {
 
         completeBtn.addEventListener("click", () => {
@@ -204,20 +146,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            savePlayer();
-
             openHome();
 
         });
-
-    }
-
-    // 起動
-    loadPlayer();
-
-    if (player.job) {
-
-        openHome();
 
     }
 
