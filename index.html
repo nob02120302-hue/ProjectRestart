@@ -61,8 +61,9 @@
                 <h1 id="level">1</h1>
             </div>
         </header>
-        <div class="dashboard">
-            <div class="left-panel">
+      <div class="dashboard">
+            <!-- Cエリア: ステータス・キャラ情報 -->
+            <div class="c-area">
                 <section class="status-card">
                     <div class="char-display"><div class="character-placeholder">🧙</div></div>
                     <div class="xp-title"><span>EXP</span><span id="xpText">0 / 100 XP</span></div>
@@ -73,6 +74,26 @@
                     </div>
                 </section>
             </div>
+
+            <!-- Dエリア: クエスト -->
+            <div class="d-area">
+                <section class="quest-card">
+                    <h2>📜 TODAY'S QUEST</h2>
+                    <ul id="questList"><li>クエスト生成中...</li></ul>
+                    <button id="completeBtn">QUEST COMPLETE</button>
+                </section>
+            </div>
+
+            <!-- Dエリア: アドベンチャー状況 -->
+            <div class="d-area">
+                <section class="quest-card">
+                    <h2>📊 ADVENTURE STATUS</h2>
+                    <p>冒険レベル <strong id="levelStat">1</strong></p>
+                    <p>獲得Gold <strong id="goldStat">0</strong></p>
+                    <p>Restart <strong id="restartStat">0</strong></p>
+                </section>
+            </div>
+        </div>
             <div class="center-panel">
                 <section class="quest-card">
                     <h2>📜 TODAY'S QUEST</h2>
