@@ -83,3 +83,8 @@ button{border:0;padding:13px 25px;cursor:pointer;font-weight:bold;border-radius:
     border-bottom: 2px solid #bcae8c;
     padding-bottom: 5px;
 }
+/* 性別選択画面のリストを調整 */
+#genderScreen .job-list {
+    grid-template-columns: repeat(2, 1fr); /* 強制的に2列にする */
+    gap: 20px; /* 左右のボタンの間隔 */
+}
