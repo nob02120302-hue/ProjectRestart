@@ -1,41 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="ja">
-
-
-
 <head>
-
-
-
     <meta charset="UTF-8">
-
-
-
-    <meta
-
-        name="viewport"
-
-        content="width=device-width, initial-scale=1.0"
-
-    >
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Restart</title>
-
-
-
     <link rel="stylesheet" href="style.css">
-
-
-
 </head>
-
-
-
 <body>
-<!-- メニューバー -->
 <nav class="top-menu">
     <button onclick="showScreen('homeScreen')">🏠ホーム</button>
     <button onclick="showScreen('questScreen')">📜クエスト</button>
@@ -44,571 +15,82 @@
     <button>🏆実績</button>
     <button>⚙️設定</button>
 </nav>
-
-
-
-
-<!-- =========================
-
-タイトル画面
-
-========================= -->
-
-
-
 <div id="titleScreen" class="screen">
-
-
-
     <div class="hero-card">
-
-
-
         <h1>PROJECT RESTART</h1>
-
-
-
-        <p>
-
-            noteを書くことを、冒険に変える。
-
-        </p>
-
-
-
-     <button id="beginBtn">
-
-    冒険を始める
-
-</button>
-
+        <p>noteを書くことを、冒険に変える。</p>
+        <button id="beginBtn">冒険を始める</button>
     </div>
-
-
-
 </div>
-
 <div id="genderScreen" class="screen hidden">
-
-
-
     <div class="hero-card">
-
-
-
         <h1>性別を選択</h1>
-
-
-
         <p>冒険者の性別を選んでください</p>
-
-
-
         <div class="job-list">
-
-
-
-            <div class="gender" data-gender="male">
-
-                👨
-
-                <h3>男性</h3>
-
-            </div>
-
-
-
-            <div class="gender" data-gender="female">
-
-                👩
-
-                <h3>女性</h3>
-
-            </div>
-
-
-
+            <div class="gender" data-gender="male">👨<h3>男性</h3></div>
+            <div class="gender" data-gender="female">👩<h3>女性</h3></div>
         </div>
-
-
-
-        <button id="genderStartBtn">
-
-            次へ
-
-        </button>
-
-
-
+        <button id="genderStartBtn">次へ</button>
     </div>
-
-
-
 </div>
-
-
-
-<!-- =========================
-
-ジョブ選択
-
-========================= -->
-
-
-
 <div id="jobScreen" class="screen hidden">
-
-
-
     <div class="hero-card">
-
-
-
         <h2>ジョブを選択</h2>
-
-
-
         <div class="job-list">
-
-
-
-    <div class="job" data-job="warrior">
-
-        <h3>⚔️ 戦士</h3>
-
-        <p>投稿速度を武器に戦う</p>
-
-    </div>
-
-
-
-    <div class="job" data-job="wizard">
-
-        <h3>🔮 魔法使い</h3>
-
-        <p>AIと魔法を操る</p>
-
-    </div>
-
-
-
-    <div class="job" data-job="thief">
-
-        <h3>🗡️ 盗賊</h3>
-
-        <p>アイデアと機転で道を切り開く</p>
-
-    </div>
-
-
-
-</div>
-
-
-
-        <button id="jobStartBtn">
-
-            このジョブで始める
-
-        </button>
-
-
-
-    </div>
-
-
-
-</div>
-
-
-
-
-
-<!-- =========================
-
-ホーム画面
-
-========================= -->
-
-
-
-<div id="homeScreen" class="screen hidden">
-
-
-
-    <main class="app">
-
-
-
-
-
-        <!-- プレイヤー -->
-
-
-
-        <header class="top-card">
-
-
-
-            <div class="player">
-
-
-
-                <div class="avatar">
-
-                    🧙
-
-                </div>
-
-
-
-                <div>
-
-
-
-                    <h2 id="playerName">
-
-                        Player
-
-                    </h2>
-
-
-
-                    <p id="welcome"></p>
-
-
-
-                    <p id="jobName">
-
-                        未選択
-
-                    </p>
-
-<p id="genderName">
-
-    性別未選択
-
-</p>
-
-                </div>
-
-
-
-            </div>
-
-
-
-
-
-            <div class="level-box">
-
-
-
-                <p>LEVEL</p>
-
-
-
-                <h1 id="level">
-
-                    1
-
-                </h1>
-
-
-
-            </div>
-
-
-
-        </header>
-
-
-
-
-
-        <!-- ダッシュボード -->
-
-
-
-        <div class="dashboard">
-
-
-
-
-
-            <!-- 左 -->
-
-
-
-            <div class="left-panel">
-
-
-
-                <section class="status-card">
-
-
-
-                    <div class="char-display">
-
-
-
-                        <div class="character-placeholder">
-
-                            🧙
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-
-
-                    <div class="xp-title">
-
-
-
-                        <span>EXP</span>
-
-
-
-                        <span id="xpText">
-
-                            0 / 100 XP
-
-                        </span>
-
-
-
-                    </div>
-
-
-
-
-
-                    <div class="xpBar">
-
-
-
-                        <div id="xpFill"></div>
-
-
-
-                    </div>
-
-
-
-
-
-                    <div class="status-grid">
-
-
-
-                        <div class="status-item">
-
-
-
-                            <h3>💰 GOLD</h3>
-
-
-
-                            <p id="gold">
-
-                                0
-
-                            </p>
-
-
-
-                        </div>
-
-
-
-
-
-                        <div class="status-item">
-
-
-
-                            <h3>🔥 RESTART</h3>
-
-
-
-                            <p id="restart">
-
-                                0
-
-                            </p>
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-                </section>
-
-
-
-            </div>
-
-
-
-
-
-            <!-- 中央 -->
-
-
-
-            <div class="center-panel">
-
-
-
-                <section class="quest-card">
-
-
-
-                    <h2>
-
-                        📜 TODAY'S QUEST
-
-                    </h2>
-
-
-
-
-
-                    <ul id="questList">
-
-
-
-                        <li>
-
-                            クエスト生成中...
-
-                        </li>
-
-
-
-                    </ul>
-
-
-
-
-
-                    <button id="completeBtn">
-
-                        QUEST COMPLETE
-
-                    </button>
-
-
-
-                </section>
-
-
-
-            </div>
-
-
-
-
-
-            <!-- 右 -->
-
-
-
-            <div class="right-panel">
-
-
-
-                <section class="quest-card">
-
-
-
-                    <h2>
-
-                        📊 ADVENTURE STATUS
-
-                    </h2>
-
-
-
-                    <p>
-
-                        冒険レベル
-
-                        <strong id="levelStat">1</strong>
-
-                    </p>
-
-
-
-                    <p>
-
-                        獲得Gold
-
-                        <strong id="goldStat">0</strong>
-
-                    </p>
-
-
-
-                    <p>
-
-                        Restart
-
-                        <strong id="restartStat">0</strong>
-
-                    </p>
-
-
-
-                </section>
-
-
-
-            </div>
-
-
-
-
-
+            <div class="job" data-job="warrior"><h3>⚔️ 戦士</h3><p>投稿速度を武器に戦う</p></div>
+            <div class="job" data-job="wizard"><h3>🔮 魔法使い</h3><p>AIと魔法を操る</p></div>
+            <div class="job" data-job="thief"><h3>🗡️ 盗賊</h3><p>アイデアと機転で道を切り開く</p></div>
         </div>
-
-
-
-
-
-        <!-- メニュー -->
-
-
-
-
-
-    </main>
-
-
-
+        <button id="jobStartBtn">このジョブで始める</button>
+    </div>
 </div>
-
-
-
-
-
+<div id="homeScreen" class="screen hidden">
+    <main class="app">
+        <header class="top-card">
+            <div class="player">
+                <div class="avatar">🧙</div>
+                <div>
+                    <h2 id="playerName">Player</h2>
+                    <p id="welcome"></p>
+                    <p id="jobName">未選択</p>
+                    <p id="genderName">性別未選択</p>
+                </div>
+            </div>
+            <div class="level-box">
+                <p>LEVEL</p>
+                <h1 id="level">1</h1>
+            </div>
+        </header>
+        <div class="dashboard">
+            <div class="left-panel">
+                <section class="status-card">
+                    <div class="char-display"><div class="character-placeholder">🧙</div></div>
+                    <div class="xp-title"><span>EXP</span><span id="xpText">0 / 100 XP</span></div>
+                    <div class="xpBar"><div id="xpFill"></div></div>
+                    <div class="status-grid">
+                        <div class="status-item"><h3>💰 GOLD</h3><p id="gold">0</p></div>
+                        <div class="status-item"><h3>🔥 RESTART</h3><p id="restart">0</p></div>
+                    </div>
+                </section>
+            </div>
+            <div class="center-panel">
+                <section class="quest-card">
+                    <h2>📜 TODAY'S QUEST</h2>
+                    <ul id="questList"><li>クエスト生成中...</li></ul>
+                    <button id="completeBtn">QUEST COMPLETE</button>
+                </section>
+            </div>
+            <div class="right-panel">
+                <section class="quest-card">
+                    <h2>📊 ADVENTURE STATUS</h2>
+                    <p>冒険レベル <strong id="levelStat">1</strong></p>
+                    <p>獲得Gold <strong id="goldStat">0</strong></p>
+                    <p>Restart <strong id="restartStat">0</strong></p>
+                </section>
+            </div>
+        </div>
+    </main>
+</div>
 <script src="script.js"></script>
-
-
-
 </body>
-
-
-
-</html> 
-
+</html>
