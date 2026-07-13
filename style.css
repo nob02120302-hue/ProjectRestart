@@ -52,9 +52,17 @@ button{border:0;padding:13px 25px;cursor:pointer;font-weight:bold;border-radius:
 }
 /* 各パネルのカード化 */
 .status-card, .quest-card {
-    background: #ffffff;      /* 背景を白くして清潔感を出す */
-    border: 2px solid #bcae8c; /* 枠線を少し太く */
-    border-radius: 10px;      /* 角を丸くして柔らかく */
-    box-shadow: 4px 4px 0px #bcae8c; /* 右下に影をつけて浮き上がる感じを出す */
+    background: #ffffff;
+    border: 2px solid #bcae8c;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0px #bcae8c;
     padding: 20px;
+    margin-bottom: 15px;
+}
+/* ついでにタイトルも見やすく */
+.status-card h2, .quest-card h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    border-bottom: 2px solid #bcae8c;
+    padding-bottom: 5px;
 }
