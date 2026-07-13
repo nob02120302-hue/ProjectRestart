@@ -50,3 +50,11 @@ button{border:0;padding:13px 25px;cursor:pointer;font-weight:bold;border-radius:
     .level-box h1{font-size:38px}
     .bottom-menu button{padding:8px;font-size:20px}
 }
+/* 各パネルのカード化 */
+.status-card, .quest-card {
+    background: #ffffff;      /* 背景を白くして清潔感を出す */
+    border: 2px solid #bcae8c; /* 枠線を少し太く */
+    border-radius: 10px;      /* 角を丸くして柔らかく */
+    box-shadow: 4px 4px 0px #bcae8c; /* 右下に影をつけて浮き上がる感じを出す */
+    padding: 20px;
+}
