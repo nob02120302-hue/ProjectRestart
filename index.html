@@ -96,7 +96,24 @@
         </section>
     </div>
 </div>
-
+<div id="shopScreen" class="screen hidden">
+    <div class="hero-card">
+        <h2>🏆 ショップ</h2>
+        <div class="shop-list">
+            <div class="item">
+                <h3>🧪 経験値ポーション</h3>
+                <p>価格: 50 Gold</p>
+                <button onclick="buyItem('xp', 50, 100)">購入する</button>
+            </div>
+            <div class="item">
+                <h3>⚔️ 攻撃の書</h3>
+                <p>価格: 100 Gold</p>
+                <button onclick="buyItem('attack', 100, 1)">購入する</button>
+            </div>
+        </div>
+        <button onclick="showScreen('homeScreen')">ホームに戻る</button>
+    </div>
+</div>
          
         <!-- ここまで -->
         
