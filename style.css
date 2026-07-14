@@ -88,3 +88,22 @@ button{border:0;padding:13px 25px;cursor:pointer;font-weight:bold;border-radius:
     grid-template-columns: repeat(2, 1fr); /* 強制的に2列にする */
     gap: 20px; /* 左右のボタンの間隔 */
 }
+@media (max-width: 600px) {
+    /* ダッシュボードを基本は縦並びにする */
+    .dashboard {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* スマホでも2列にする */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    /* Cエリア（ステータス）を2列分使わせる（横幅いっぱいにする） */
+    .c-area {
+        grid-column: span 2;
+    }
+
+    /* Dエリア（クエストとステータス）をそれぞれ1列ずつ割り当てる */
+    .d-area {
+        grid-column: span 1;
+    }
+}
