@@ -167,3 +167,16 @@ button:hover {
     width: 0%; /* JavaScriptで制御 */
     transition: width 0.5s;
 }
+/* 全体の文字を見やすく、少しクラシックな印象に */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    color: #332b1f; /* 真っ黒ではなく、濃い茶色にして目に優しく */
+    line-height: 1.6;
+}
+
+/* 数字（ステータス）をゲームっぽく強調 */
+#gold, #restart, #level, .status-item p {
+    font-family: 'Courier New', monospace; /* 数字だけ少し機械的なフォントに */
+    font-weight: bold;
+    color: #8b5a2b; /* ゴールドや木目っぽい色 */
+}
