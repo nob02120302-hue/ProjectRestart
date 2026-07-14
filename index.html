@@ -63,19 +63,39 @@
         </header>
 
         <!-- 正しいダッシュボードはここから -->
-        <div class="dashboard">
-            <!-- Cエリア: ステータス・キャラ情報 -->
-            <div class="c-area">
-                <section class="status-card">
-                    <div class="char-display"><div class="character-placeholder">🧙</div></div>
-                    <div class="xp-title"><span>EXP</span><span id="xpText">0 / 100 XP</span></div>
-                    <div class="xpBar"><div id="xpFill"></div></div>
-                    <div class="status-grid">
-                        <div class="status-item"><h3>💰 GOLD</h3><p id="gold">0</p></div>
-                        <div class="status-item"><h3>🔥 RESTART</h3><p id="restart">0</p></div>
-                    </div>
-                </section>
+       <div class="dashboard">
+    <!-- 左エリア: キャラクター情報 -->
+    <div class="side-left">
+        <section class="status-card">
+            <div class="char-display"><div class="character-placeholder">🧙</div></div>
+            <div class="xp-title"><span>EXP</span><span id="xpText">0 / 100 XP</span></div>
+            <div class="xpBar"><div id="xpFill"></div></div>
+            <div class="status-grid">
+                <div class="status-item"><h3>💰 GOLD</h3><p id="gold">0</p></div>
+                <div class="status-item"><h3>🔥 RESTART</h3><p id="restart">0</p></div>
             </div>
+        </section>
+    </div>
+
+    <!-- 中央エリア: クエスト -->
+    <div class="main-center">
+        <section class="quest-card">
+            <h2>📜 TODAY'S QUEST</h2>
+            <ul id="questList"><li>クエスト生成中...</li></ul>
+            <button id="completeBtn">QUEST COMPLETE</button>
+        </section>
+    </div>
+
+    <!-- 右エリア: アドベンチャー状況 -->
+    <div class="side-right">
+        <section class="status-card">
+            <h2>📊 ADVENTURE STATUS</h2>
+            <p>冒険レベル <strong id="levelStat">1</strong></p>
+            <p>獲得Gold <strong id="goldStat">0</strong></p>
+            <p>Restart <strong id="restartStat">0</strong></p>
+        </section>
+    </div>
+</div>
 
             <!-- Dエリア: クエスト -->
             <div class="d-area">
