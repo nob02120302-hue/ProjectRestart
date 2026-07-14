@@ -153,3 +153,36 @@ window.addEventListener("DOMContentLoaded", function () {
         };
     }
 });
+// ショップの購入処理
+function buyItem(type, cost, value) {
+    if (player.gold < cost) {
+        alert("Goldが足りません！");
+        return;
+    }
+
+    // Goldを消費
+    player.gold -= cost;
+
+    // アイテムの効果を適用
+    if (type === 'xp') {
+        player.xp += value;
+        // レベルアップ判定
+        if (player.xp >= player.xpMax) {
+            player.xp -= player.xpMax;
+            player.level += 1;
+            player.xpMax += 50;
+            alert("レベルアップ！");
+        }
+    }
+
+    // データを保存して画面を更新
+    localStorage.setItem('savedPlayer', JSON.stringify(player));
+    openHome(); // ステータス表示を最新にする
+    alert("購入しました！");
+}
+
+// 画面切り替え用（navメニューのボタンから呼び出す用）
+function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    document.getElementById(screenId).classList.remove('hidden');
+}
