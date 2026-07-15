@@ -7,9 +7,15 @@ body { font-family: sans-serif; background: #08111b; color: #332b1f; }
 .hidden { display: none !important; }
 
 /* --- メニューバー（初期は非表示） --- */
-.top-menu { display: none; justify-content: center; gap: 15px; padding: 15px; background: #1a2a3a; border-bottom: 2px solid #5d7a6e; color: white; }
-.top-menu.visible { display: flex; }
-
+.top-menu{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    padding:15px;
+    background:#1a2a3a;
+    border-bottom:2px solid #5d7a6e;
+    color:white;
+}
 /* --- カード・デザイン（全画面共通の白背景） --- */
 .hero-card { width: 100%; max-width: 600px; padding: 30px; background: #fdfaf6; border: 3px solid #d4c4a8; border-radius: 10px; text-align: center; }
 
