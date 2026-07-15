@@ -1,87 +1,25 @@
-/* --- 基本設定 --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #08111b; color: #332b1f; line-height: 1.6; }
-.hidden { display: none !important; }
-.screen { width: 100%; min-height: 100vh; }
-
-/* --- 画面全体の中央寄せ --- */
-#titleScreen, #genderScreen, #jobScreen, #shopScreen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: radial-gradient(circle at top, #17324a, #071019 70%);
-}
-
-/* --- カードデザイン --- */
-.hero-card {
-    width: 100%;
-    max-width: 620px;
-    padding: 40px;
-    text-align: center;
-    background: #fdfaf6;
-    border: 3px solid #d4c4a8;
-    border-radius: 8px;
-    box-shadow: 0 15px 50px #000;
-}
-
-/* --- 選択リスト（性別・ジョブ）の整理 --- */
-/* ここをリストからグリッドレイアウトに変更して崩れを防ぎます */
-.job-list, .gender-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.job, .gender {
-    padding: 15px;
-    background: #fffaf0;
-    border: 2px solid #d4c4a8;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.job.selected, .gender.selected {
-    background: #fff0b8;
-    border-color: #b8872d;
-    transform: translateY(-4px);
-}
-
-/* --- ボタン --- */
-button {
-    background-color: #5d7a6e;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-button:hover { background-color: #4a6358; }
-
-/* --- ホーム画面 --- */
-#homeScreen { background: #08111b; padding: 20px; }
-.dashboard { display: grid; grid-template-columns: 300px 1fr 300px; gap: 20px; }
 /* --- 共通リセット --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: sans-serif; background: #08111b; color: #332b1f; }
 
+/* --- メニューバー --- */
+.top-menu { display: flex; justify-content: center; gap: 15px; padding: 15px; background: #1a2a3a; }
+
 /* --- 画面制御 --- */
-.screen { width: 100%; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.screen { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 80vh; padding: 20px; }
 .hidden { display: none !important; }
 
 /* --- カード・デザイン --- */
 .hero-card { width: 100%; max-width: 600px; padding: 30px; background: #fdfaf6; border: 3px solid #d4c4a8; border-radius: 10px; text-align: center; }
 
-/* --- 選択リスト --- */
-.list-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
-.option-btn { padding: 15px; background: #fffaf0; border: 2px solid #d4c4a8; cursor: pointer; border-radius: 5px; }
-.option-btn.selected { background: #fff0b8; border-color: #b8872d; }
+/* --- 選択リスト（HTMLの .job-list をそのまま活かす設定） --- */
+.job-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+.job, .gender { padding: 20px; background: #fffaf0; border: 2px solid #d4c4a8; cursor: pointer; border-radius: 5px; }
+.job.selected, .gender.selected { background: #fff0b8; border-color: #b8872d; }
 
 /* --- ボタン --- */
 button { background: #5d7a6e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
 
 /* --- ダッシュボード --- */
-.dashboard { display: grid; grid-template-columns: 300px 1fr 300px; gap: 20px; width: 100%; max-width: 1200px; }
+.dashboard { display: grid; grid-template-columns: 300px 1fr 300px; gap: 20px; width: 100%; max-width: 1200px; margin: 20px auto; }
 @media (max-width: 800px) { .dashboard { grid-template-columns: 1fr; } }
