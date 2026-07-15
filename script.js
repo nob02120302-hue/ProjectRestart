@@ -1,6 +1,6 @@
 console.log("Project Restart START");
 
-// 1. プレイヤーデータの初期化（保存データがあれば読み込む）
+// 1. プレイヤーデータの初期化
 let player = JSON.parse(localStorage.getItem('savedPlayer')) || {
     name: "Player",
     job: "",
@@ -18,13 +18,7 @@ const jobs = {
     thief: "🗡️ 盗賊"
 };
 
-const dailyQuestPool = [
-    "AIで記事構成を考える", "500文字以上書く", "画像を1枚作る",
-    "noteを公開する", "下書きを1本作る", "タイトルを5個考える",
-    "過去記事をリライトする", "AIにアイデアを10個出してもらう"
-];
-
-// 2. 画面更新関数（どこからでも呼べるように外に出しました）
+// 2. 画面更新関数
 function openHome() {
     setText("playerName", player.name);
     setText("jobName", jobs[player.job] || "未選択");
@@ -71,12 +65,9 @@ window.addEventListener("DOMContentLoaded", function () {
     let selectedJob = "";
     let selectedGender = "";
 
-    // 既存の保存データがあればホームを表示
-    if (player.job !== "") {
-        document.getElementById("titleScreen").classList.add("hidden");
-        document.getElementById("homeScreen").classList.remove("hidden");
-        openHome();
-    }
+    // ★修正：自動ログインを廃止し、リロード時は必ずタイトル画面を表示
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    document.getElementById("titleScreen").classList.remove("hidden");
 
     if (beginBtn) beginBtn.onclick = () => {
         document.getElementById("titleScreen").classList.add("hidden");
@@ -140,11 +131,13 @@ function buyItem(type, cost, value) {
             alert("レベルアップ！");
         }
     }
-    openHome();
+    openHome(); // 最新状態に更新して保存
     alert("購入しました！");
 }
 
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     document.getElementById(screenId).classList.remove('hidden');
+    // ホームに戻った時に最新のステータスを表示
+    if (screenId === 'homeScreen') openHome();
 }
