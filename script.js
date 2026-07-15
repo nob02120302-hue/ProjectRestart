@@ -39,12 +39,19 @@ function openHome() {
     const xpFill = document.getElementById("xpFill");
     if (xpFill) xpFill.style.width = (player.xp / player.xpMax * 100) + "%";
 
-    // アバター更新
-    if (player.gender && player.job) {
-        const charHtml = `<img src="./${player.gender}-${player.job}.png" style="width: 50px; height: 50px; object-fit: contain;">`;
-        const avatar = document.querySelector(".avatar");
-        if (avatar) avatar.innerHTML = charHtml;
-    }
+   // アバター更新
+if (player.gender && player.job) {
+
+    const img =
+        `<img src="./${player.gender}-${player.job}.png"
+        style="width:100%;height:100%;object-fit:contain;">`;
+
+    const avatar = document.querySelector(".avatar");
+    if (avatar) avatar.innerHTML = img;
+
+    const character = document.querySelector(".character-placeholder");
+    if (character) character.innerHTML = img;
+}
     
     // データ保存
     localStorage.setItem('savedPlayer', JSON.stringify(player));
