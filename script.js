@@ -141,3 +141,16 @@ function showScreen(screenId) {
     // ホームに戻った時に最新のステータスを表示
     if (screenId === 'homeScreen') openHome();
 }
+function showScreen(screenId) {
+    // 全画面隠す
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    document.getElementById(screenId).classList.remove('hidden');
+
+    // メニューバー表示制御
+    const menu = document.querySelector('.top-menu');
+    if (screenId === 'homeScreen' || screenId === 'shopScreen') {
+        menu.classList.add('visible');
+    } else {
+        menu.classList.remove('visible');
+    }
+}
