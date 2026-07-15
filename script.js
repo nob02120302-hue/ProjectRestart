@@ -143,22 +143,31 @@ function buyItem(type, cost, value) {
 }
 
 function showScreen(screenId) {
-    // 1. 全ての画面を非表示にする
-    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-    
-    // 2. 指定された画面を表示する
-    document.getElementById(screenId).classList.remove('hidden');
 
-    // 3. メニューバーの表示制御
-    const menu = document.querySelector('.top-menu');
-    if (screenId === 'homeScreen' || screenId === 'shopScreen') {
-        menu.classList.add('visible');
-    } else {
-        menu.classList.remove('visible');
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.add("hidden");
+    });
+
+    const target = document.getElementById(screenId);
+    if (target) {
+        target.classList.remove("hidden");
     }
 
-    // 4. ホームに戻った時に最新のステータスを更新する
-    if (screenId === 'homeScreen') {
+    const menu = document.getElementById("topMenu");
+
+    if (menu) {
+        if (
+            screenId === "homeScreen" ||
+            screenId === "shopScreen"
+        ) {
+            menu.classList.remove("hidden");
+        } else {
+            menu.classList.add("hidden");
+        }
+    }
+
+    if (screenId === "homeScreen") {
         openHome();
     }
+
 }
