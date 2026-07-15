@@ -63,3 +63,25 @@ button:hover { background-color: #4a6358; }
 /* --- ホーム画面 --- */
 #homeScreen { background: #08111b; padding: 20px; }
 .dashboard { display: grid; grid-template-columns: 300px 1fr 300px; gap: 20px; }
+/* --- 共通リセット --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; background: #08111b; color: #332b1f; }
+
+/* --- 画面制御 --- */
+.screen { width: 100%; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hidden { display: none !important; }
+
+/* --- カード・デザイン --- */
+.hero-card { width: 100%; max-width: 600px; padding: 30px; background: #fdfaf6; border: 3px solid #d4c4a8; border-radius: 10px; text-align: center; }
+
+/* --- 選択リスト --- */
+.list-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+.option-btn { padding: 15px; background: #fffaf0; border: 2px solid #d4c4a8; cursor: pointer; border-radius: 5px; }
+.option-btn.selected { background: #fff0b8; border-color: #b8872d; }
+
+/* --- ボタン --- */
+button { background: #5d7a6e; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+
+/* --- ダッシュボード --- */
+.dashboard { display: grid; grid-template-columns: 300px 1fr 300px; gap: 20px; width: 100%; max-width: 1200px; }
+@media (max-width: 800px) { .dashboard { grid-template-columns: 1fr; } }
