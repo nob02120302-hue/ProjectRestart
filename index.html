@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="top-menu"> <!-- ここにidは不要です -->
+<!-- HTMLのnav部分をこう書き換える -->
+<nav class="top-menu">
+    <!-- もし初期状態で消えていてほしいなら class="top-menu" のままでOK -->
     <button onclick="showScreen('homeScreen')">🏠ホーム</button>
-    <!-- 他のボタンも同様 -->
+    <button onclick="showScreen('questScreen')">📜クエスト</button>
+    <button onclick="showScreen('statusScreen')">⚔️ステータス</button>
+    <button onclick="showScreen('shopScreen')">🏆ショップ</button>
+    <button>🏆実績</button>
+    <button>⚙️設定</button>
 </nav>
 
 <div id="titleScreen" class="screen">
